@@ -120,15 +120,27 @@
 .taskip-template-item:hover .taskip-template-overlay {
     opacity: 1;
 }
+.taskip-template-overlay .taskip-template-view:first-child {
+    background-color: transparent;
+    border: 1px solid #f1f1f1;
+}
+.taskip-template-overlay .taskip-template-view:first-child:hover {
+    background: var(--color-2);
+    color: #fff;
+    border: 1px solid var(--color-2);
+}
+.taskip-template-overlay {
+    display: flex;
+    gap: 20px;
+}
 
 .taskip-template-view {
-    background: #4a89dc;
+    background: var(--color-2);
     color: #fff;
     padding: 0.5rem 1rem;
     border-radius: 4px;
     text-decoration: none;
     font-weight: bold;
-    text-transform: uppercase;
     font-size: 0.9rem;
     transition: background 0.3s ease;
 }
@@ -157,10 +169,10 @@
 }
 
 .taskip-template-title a:hover {
-    color: #4a89dc;
+    color: var(--color-2);
 }
 
-.taskip-template-type,
+.taskip-template-type a,
 .taskip-template-industry {
     display: inline-block;
     background: #f0f5ff;
@@ -713,7 +725,7 @@
 }
 
 .taskip-widget-template-title a:hover {
-    color: #4a89dc;
+    color: var(--color-2);
 }
 
 .taskip-widget-template-type {

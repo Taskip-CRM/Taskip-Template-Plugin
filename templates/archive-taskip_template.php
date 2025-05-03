@@ -103,15 +103,12 @@ get_header(); ?>
                                 <?php endif; ?>
 
                                 <div class="taskip-template-overlay">
-                                    <a href="<?php the_permalink(); ?>" class="taskip-template-view"><?php _e("View Template", "taskip-templates"); ?></a>
+                                    <a href="<?php the_permalink(); ?>" class="taskip-template-view"><?php _e("Preview", "taskip-templates"); ?></a>
+                                    <a href="#0" class="taskip-template-view"><?php _e("Use Template", "taskip-templates"); ?></a>
                                 </div>
                             </div>
 
                             <div class="taskip-template-content">
-                                <h2 class="taskip-template-title">
-                                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                                </h2>
-
                                 <?php
                                 $template_type = get_the_terms(get_the_ID(), "template_type");
                                 if ($template_type) : ?>
@@ -119,10 +116,9 @@ get_header(); ?>
                                         <a href="<?php echo esc_url(get_term_link($template_type[0])); ?>"><?php echo esc_html($template_type[0]->name); ?></a>
                                     </div>
                                 <?php endif; ?>
-
-                                <div class="taskip-template-excerpt">
-                                    <?php the_excerpt(); ?>
-                                </div>
+                                <h2 class="taskip-template-title">
+                                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                                </h2>
                             </div>
                         </div>
                     <?php endwhile; ?>
