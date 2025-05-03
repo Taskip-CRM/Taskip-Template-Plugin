@@ -45,8 +45,8 @@ get_header(); ?>
                                             <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($industry->name); ?>" style="max-width: 300px;">
                                         <?php endif; ?>
                                     </div>
-                                    <a href="<?php echo esc_url(get_term_link($industry)); ?>"><?php echo esc_html($industry->name); ?></a>
-                                    <span class="count">(<?php echo esc_html($industry->count); ?>)</span>
+                                    <a class="title" href="<?php echo esc_url(get_term_link($industry)); ?>"><?php echo esc_html($industry->name); ?></a>
+                                    <span class="count">(<?php echo esc_html($industry->count); ?>) <?php echo esc_html__('Templates','taskip-templates')?></span>
                                 </li>
                             <?php endforeach;
                         endif; ?>
