@@ -1,0 +1,179 @@
+/**
+ * Taskip Templates Showcase Admin Styles
+ */
+
+/* Meta box styles */
+.taskip-meta-section {
+    margin-bottom: 1rem;
+}
+
+.taskip-meta-field {
+    margin-bottom: 1rem;
+}
+
+.taskip-meta-field label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.taskip-meta-field .description {
+    display: block;
+    color: #666;
+    font-style: italic;
+    margin-top: 0.25rem;
+    font-size: 0.9rem;
+}
+
+/* Taxonomy image field */
+.taxonomy-image-preview {
+    margin: 1rem 0;
+    max-width: 300px;
+}
+
+.taxonomy-image-preview img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 3px;
+}
+
+/* Settings page */
+.taskip-templates-info {
+    margin-top: 2rem;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.taskip-shortcode-info {
+    background: #f9f9f9;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid #4a89dc;
+}
+
+.taskip-shortcode-info code {
+    display: inline-block;
+    background: #f0f5ff;
+    color: #4a89dc;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 3px;
+}
+
+.taskip-shortcode-info ul {
+    margin-left: 1.5rem;
+}
+
+/* Template features meta box */
+.taskip-meta-buttons {
+    margin-top: 0.5rem;
+}
+
+/* Dashboard widgets */
+.taskip-dashboard-widget .inside {
+    padding: 0;
+    margin: 0;
+}
+
+.taskip-dashboard-templates {
+    border-top: 1px solid #eee;
+}
+
+.taskip-dashboard-template {
+    padding: 10px 12px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+}
+
+.taskip-dashboard-template:last-child {
+    border-bottom: none;
+}
+
+.taskip-dashboard-template-image {
+    flex: 0 0 50px;
+    margin-right: 10px;
+}
+
+.taskip-dashboard-template-image img {
+    width: 50px;
+    height: 50px;
+    border-radius: 3px;
+    object-fit: cover;
+}
+
+.taskip-dashboard-template-title {
+    flex: 1;
+    font-weight: bold;
+}
+
+.taskip-dashboard-template-title a {
+    text-decoration: none;
+}
+
+.taskip-dashboard-template-meta {
+    font-size: 11px;
+    color: #777;
+    margin-top: 2px;
+}
+
+.taskip-dashboard-actions {
+    padding: 10px 12px;
+    background: #f7f7f7;
+    border-top: 1px solid #eee;
+    text-align: right;
+}
+
+.taskip-dashboard-actions a {
+    text-decoration: none;
+}
+
+/* Template type column in admin list */
+.column-template_type,
+.column-template_industry {
+    width: 15%;
+}
+
+.taskip-admin-taxonomy-tag {
+    display: inline-block;
+    background: #f0f5ff;
+    color: #4a89dc;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+/* Preview column in admin list */
+.column-template_preview {
+    width: 100px;
+}
+
+.taskip-admin-preview-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+}
+
+.taskip-admin-placeholder {
+    width: 60px;
+    height: 60px;
+    background: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.taskip-admin-placeholder:before {
+    content: "\f128";
+    font-family: dashicons;
+    font-size: 20px;
+    color: #bbb;
+}

@@ -1,0 +1,1030 @@
+/**
+ * Taskip Templates Showcase Frontend Styles
+ */
+
+/* Container */
+.taskip-templates-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 15px;
+}
+
+/* Headers */
+.taskip-templates-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.taskip-templates-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.taskip-templates-description {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Templates Grid */
+.taskip-templates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.taskip-templates-grid.columns-2 {
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+}
+
+.taskip-templates-grid.columns-4 {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.taskip-template-item {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #fff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.taskip-template-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.taskip-template-image {
+    position: relative;
+    padding-top: 66.66%; /* 3:2 aspect ratio */
+    background: #f5f5f5;
+    overflow: hidden;
+}
+
+.taskip-template-thumb,
+.taskip-main-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.taskip-template-item:hover .taskip-template-thumb {
+    transform: scale(1.05);
+}
+
+.taskip-template-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eee;
+    color: #999;
+}
+
+.taskip-template-placeholder:after {
+    content: "\f105";
+    font-family: dashicons;
+    font-size: 3rem;
+}
+
+.taskip-template-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.taskip-template-item:hover .taskip-template-overlay {
+    opacity: 1;
+}
+
+.taskip-template-view {
+    background: #4a89dc;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    transition: background 0.3s ease;
+}
+
+.taskip-template-view:hover {
+    background: #3b7dd8;
+    color: #fff;
+}
+
+.taskip-template-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.taskip-template-title {
+    font-size: 1.2rem;
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+}
+
+.taskip-template-title a {
+    color: #333;
+    text-decoration: none;
+}
+
+.taskip-template-title a:hover {
+    color: #4a89dc;
+}
+
+.taskip-template-type,
+.taskip-template-industry {
+    display: inline-block;
+    background: #f0f5ff;
+    color: #4a89dc;
+    padding: 0.2rem 0.6rem;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.taskip-template-type a,
+.taskip-template-industry a {
+    color: #4a89dc;
+    text-decoration: none;
+}
+
+.taskip-template-excerpt {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+/* Filters */
+.taskip-templates-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    background: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.taskip-filter-categories,
+.taskip-filter-industries {
+    flex: 1;
+    min-width: 200px;
+}
+
+.taskip-filter-categories h3,
+.taskip-filter-industries h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.taskip-filter-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.taskip-filter-item {
+    margin-bottom: 0.5rem;
+}
+
+.taskip-filter-item a {
+    color: #4a89dc;
+    text-decoration: none;
+}
+
+.taskip-filter-item a:hover {
+    text-decoration: underline;
+}
+
+.taskip-filter-item .count {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+/* Mobile Filter Toggle */
+.taskip-filter-toggle {
+    display: none;
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    background: #f0f5ff;
+    color: #4a89dc;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #4a89dc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.taskip-filter-toggle.active {
+    background: #4a89dc;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .taskip-filter-toggle {
+        display: block;
+    }
+
+    .taskip-templates-filters {
+        display: none;
+    }
+}
+
+/* Search form */
+.taskip-search-form {
+    margin-bottom: 2rem;
+}
+
+.taskip-search-form input[type="text"] {
+    width: 70%;
+    padding: 0.7rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+}
+
+.taskip-search-form button {
+    width: 30%;
+    padding: 0.7rem;
+    font-size: 1rem;
+    background: #4a89dc;
+    color: #fff;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+.taskip-search-form button:hover {
+    background: #3b7dd8;
+}
+
+/* Pagination */
+.taskip-templates-pagination {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.taskip-templates-pagination .page-numbers {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #f5f5f5;
+    color: #333;
+    border-radius: 4px;
+    margin: 0 0.25rem;
+    text-decoration: none;
+}
+
+.taskip-templates-pagination .page-numbers.current {
+    background: #4a89dc;
+    color: #fff;
+}
+
+.taskip-templates-pagination .page-numbers:hover:not(.current) {
+    background: #e5e5e5;
+}
+
+/* Single Template */
+.taskip-template-single {
+    background: #fff;
+}
+
+.taskip-template-header {
+    margin-bottom: 2rem;
+}
+
+.taskip-template-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 1rem;
+}
+
+.taskip-template-meta .meta-label {
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+.taskip-template-content-wrap {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .taskip-template-content-wrap {
+        grid-template-columns: 1fr;
+    }
+}
+
+.taskip-template-main {
+    margin-bottom: 2rem;
+}
+
+.taskip-template-main .taskip-template-image {
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.taskip-template-content {
+    line-height: 1.6;
+}
+
+.taskip-template-features {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+.taskip-template-features h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.taskip-template-features ul {
+    padding-left: 1.5rem;
+    margin: 0;
+}
+
+.taskip-template-features li {
+    margin-bottom: 0.5rem;
+}
+
+.taskip-template-sidebar {
+    position: sticky;
+    top: 2rem;
+    align-self: start;
+}
+
+.taskip-template-actions {
+    background: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.taskip-template-actions h3 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+.taskip-demo-btn,
+.taskip-signup-btn {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    text-align: center;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.taskip-demo-btn {
+    background: #f0f5ff;
+    color: #4a89dc;
+    border: 1px solid #4a89dc;
+}
+
+.taskip-signup-btn {
+    background: #4a89dc;
+    color: #fff;
+}
+
+.taskip-demo-btn:hover {
+    background: #e0ebff;
+}
+
+.taskip-signup-btn:hover {
+    background: #3b7dd8;
+}
+
+.taskip-related-templates {
+    background: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.taskip-related-templates h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.taskip-related-item {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+}
+
+.taskip-related-item:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.taskip-related-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: #333;
+}
+
+.taskip-related-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.taskip-related-title {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.taskip-related-placeholder {
+    width: 60px;
+    height: 60px;
+    background: #eee;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+}
+
+.taskip-related-placeholder:after {
+    content: "\f105";
+    font-family: dashicons;
+    font-size: 1.5rem;
+}
+
+/* Category/Industry Display */
+.taskip-template-categories,
+.taskip-template-industries {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.taskip-category-item,
+.taskip-industry-item {
+    flex: 1;
+    min-width: 200px;
+    max-width: 300px;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.taskip-category-item:hover,
+.taskip-industry-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.taskip-category-link,
+.taskip-industry-link {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    padding: 1rem;
+}
+
+.taskip-category-image,
+.taskip-industry-image {
+    height: 150px;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.taskip-category-image img,
+.taskip-industry-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.taskip-category-icon,
+.taskip-industry-icon {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f5f5;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+}
+
+.taskip-category-icon .dashicons,
+.taskip-industry-icon .dashicons {
+    font-size: 3rem;
+    width: auto;
+    height: auto;
+    color: #4a89dc;
+}
+
+.taskip-category-title,
+.taskip-industry-title {
+    font-size: 1.2rem;
+    margin: 0;
+    text-align: center;
+}
+
+.taskip-category-title .count,
+.taskip-industry-title .count {
+    font-size: 0.9rem;
+    color: #999;
+    font-weight: normal;
+}
+
+/* Back button */
+.taskip-templates-back {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.taskip-back-button {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: #f0f5ff;
+    color: #4a89dc;
+    border: 1px solid #4a89dc;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.taskip-back-button:hover {
+    background: #e0ebff;
+}
+
+/* Widget styles */
+.taskip-templates-widget-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.taskip-widget-template-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.taskip-widget-template-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.taskip-widget-template-image {
+    flex: 0 0 60px;
+    margin-right: 1rem;
+}
+
+.taskip-widget-template-image img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.taskip-widget-template-content {
+    flex: 1;
+}
+
+.taskip-widget-template-title {
+    margin: 0 0 0.25rem;
+    font-size: 1rem;
+    line-height: 1.3;
+}
+
+.taskip-widget-template-title a {
+    color: #333;
+    text-decoration: none;
+}
+
+.taskip-widget-template-title a:hover {
+    color: #4a89dc;
+}
+
+.taskip-widget-template-type {
+    font-size: 0.8rem;
+    color: #4a89dc;
+}
+
+.taskip-widget-view-all {
+    margin-top: 1rem;
+    text-align: right;
+}
+
+.taskip-widget-view-all a {
+    color: #4a89dc;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.taskip-widget-view-all a:hover {
+    text-decoration: underline;
+}
+
+.taskip-widget-no-templates {
+    margin: 0;
+    color: #666;
+    font-style: italic;
+}
+
+/* Image Lightbox */
+.taskip-lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.taskip-lightbox-backdrop {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.taskip-lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90vh;
+    margin: 2% auto;
+    z-index: 10000;
+}
+
+.taskip-lightbox-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+.taskip-lightbox-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: #fff;
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* No templates message */
+.taskip-no-templates {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    font-size: 1.1rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+/* Template Sort Options */
+.taskip-sort-options {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1.5rem;
+    align-items: center;
+}
+
+.taskip-sort-label {
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.taskip-sort-select {
+    padding: 0.4rem 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    background-color: #fff;
+}
+
+/* Template Tag Cloud */
+.taskip-tag-cloud {
+    margin-bottom: 2rem;
+    background: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.taskip-tag-cloud h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.taskip-tag-cloud-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.taskip-tag {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: #666;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.taskip-tag:hover {
+    background: #4a89dc;
+    color: #fff;
+    border-color: #4a89dc;
+}
+
+/* Template Stats */
+.taskip-template-stats {
+    display: flex;
+    margin-bottom: 1rem;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.taskip-template-stat {
+    margin-right: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.taskip-template-stat .dashicons {
+    margin-right: 0.25rem;
+    color: #4a89dc;
+}
+
+/* Template Rating */
+.taskip-template-rating {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.taskip-rating-stars {
+    display: flex;
+    margin-right: 0.5rem;
+}
+
+.taskip-rating-star {
+    color: #ffc107;
+    font-size: 1.2rem;
+}
+
+.taskip-rating-count {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Share Buttons */
+.taskip-share-buttons {
+    margin-top: 1.5rem;
+}
+
+.taskip-share-buttons h4 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.taskip-share-links {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.taskip-share-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #f0f5ff;
+    color: #4a89dc;
+    text-decoration: none;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.taskip-share-link:hover {
+    background: #4a89dc;
+    color: #fff;
+}
+
+/* Template Download Section */
+.taskip-template-download {
+    margin-top: 2rem;
+    background: #f0f5ff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #d1e0ff;
+}
+
+.taskip-template-download h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #4a89dc;
+}
+
+.taskip-download-btn {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    text-align: center;
+    background: #4a89dc;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.taskip-download-btn:hover {
+    background: #3b7dd8;
+}
+
+/* Featured Template */
+.taskip-featured-template {
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.taskip-featured-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #ff6b6b;
+    color: #fff;
+    padding: 0.3rem 0.8rem;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    z-index: 2;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .taskip-templates-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+
+    .taskip-templates-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .taskip-template-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .taskip-templates-filters {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .taskip-template-categories,
+    .taskip-template-industries {
+        justify-content: center;
+    }
+
+    .taskip-sort-options {
+        justify-content: flex-start;
+        margin-top: 1rem;
+    }
+
+    .taskip-search-form input[type="text"] {
+        width: 60%;
+    }
+
+    .taskip-search-form button {
+        width: 40%;
+    }
+}
+
+@media (max-width: 480px) {
+    .taskip-templates-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .taskip-related-link {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .taskip-related-image,
+    .taskip-related-placeholder {
+        width: 100%;
+        height: 120px;
+        margin-bottom: 0.5rem;
+    }
+
+    .taskip-templates-title {
+        font-size: 1.8rem;
+    }
+
+    .taskip-search-form {
+        flex-direction: column;
+    }
+
+    .taskip-search-form input[type="text"],
+    .taskip-search-form button {
+        width: 100%;
+        border-radius: 4px;
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .taskip-template-actions,
+    .taskip-related-templates,
+    .taskip-templates-back,
+    .taskip-share-buttons,
+    .taskip-template-overlay {
+        display: none !important;
+    }
+
+    .taskip-template-content-wrap {
+        display: block;
+    }
+
+    .taskip-template-single {
+        color: #000;
+        background: #fff;
+    }
+
+    .taskip-template-main .taskip-template-image {
+        padding-top: 0;
+        height: auto;
+    }
+
+    .taskip-main-image {
+        position: static;
+        max-width: 100%;
+        height: auto;
+    }
+}

@@ -1,0 +1,21 @@
+.taskip-meta-section {
+    margin-bottom: 1rem;
+}
+
+.taskip-meta-field {
+    margin-bottom: 1rem;
+}
+
+.taskip-meta-field label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.taskip-meta-field .description {
+    display: block;
+    color: #666;
+    font-style: italic;
+    margin-top: 0.25rem;
+    font-size: 0.9rem;
+}
