@@ -256,7 +256,44 @@
     color: #999;
     font-size: 0.9rem;
 }
+.taskip-template-type-with-search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+}
 
+.template-type-list {
+    display: flex;
+    gap: 20px;
+}
+
+.template-type-list h3 {
+    font-size: 16px;
+    margin: 0;
+}
+
+.template-type-list ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.template-type-list ul li a {
+    color: var(--paragraph-color);
+}
+.template-search-form-wrapper {
+    min-width: 360px;
+}
+
+.template-search-form-wrapper input {
+    width: 100%;
+    padding: 15px 20px;
+    border-radius: 5px;
+    border: 1px solid #f6f6f6;
+}
 /* Mobile Filter Toggle */
 .taskip-filter-toggle {
     display: none;

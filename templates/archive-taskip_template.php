@@ -53,6 +53,32 @@ get_header(); ?>
                     </ul>
                 </div>
             </div>
+            <div class="taskip-template-type-with-search">
+                <div class="template-type-list">
+                    <h3><?php echo esc_html__('Template Type:')?></h3>
+                    <ul>
+                        <?php
+                        $template_industries = get_terms(array(
+                            "taxonomy" => "template_type",
+                            "hide_empty" => false
+                        ));
+
+                        if (!empty($template_industries) && !is_wp_error($template_industries)) :
+                            foreach ($template_industries as $industry) :
+                                ?>
+                                <li class="taskip-filter-item">
+                                    <a class="title" href="<?php echo esc_url(get_term_link($industry)); ?>"><?php echo esc_html($industry->name); ?></a>
+                                </li>
+                            <?php endforeach;
+                        endif; ?>
+                    </ul>
+                </div>
+                <div class="template-search-form-wrapper">
+                    <form action="#" method="get">
+                        <input type="text" name="search" value="" placeholder="<?php echo esc_html__('Search Templates','taskip-templates');?>">
+                    </form>
+                </div>
+            </div>
 
             <div class="taskip-templates-grid">
                 <?php if (have_posts()) : ?>
