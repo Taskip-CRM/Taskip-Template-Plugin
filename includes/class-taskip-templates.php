@@ -33,16 +33,11 @@ class Taskip_Templates {
         $taxonomies = new Taskip_Taxonomies();
         $taxonomies->initialize();
 
-        // Initialize shortcodes
-        $shortcodes = new Taskip_Shortcodes();
-        $shortcodes->initialize();
-
         // Initialize metaboxes
         $metaboxes = new Taskip_Metaboxes();
         $metaboxes->initialize();
 
         // Register widget
-        add_action('widgets_init', array($this, 'register_widgets'));
 
         // Enqueue frontend scripts and styles
         add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'));
@@ -51,12 +46,6 @@ class Taskip_Templates {
         add_filter('template_include', array($this, 'template_loader'));
     }
 
-    /**
-     * Register widgets
-     */
-    public function register_widgets() {
-        register_widget('Taskip_Templates_Widget');
-    }
 
     /**
      * Enqueue frontend scripts and styles

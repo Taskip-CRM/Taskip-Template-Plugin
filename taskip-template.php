@@ -3,7 +3,7 @@
  * Plugin Name: Taskip Templates Showcase
  * Plugin URI: https://taskip.com
  * Description: A plugin to showcase Taskip document templates with custom URL structure
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Taskip
  * Author URI: https://taskip.com
  * Text Domain: taskip-templates
@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('TASKIP_TEMPLATES_VERSION', '1.0.0');
+define('TASKIP_TEMPLATES_VERSION', '1.0.1');
 define('TASKIP_TEMPLATES_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('TASKIP_TEMPLATES_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('TASKIP_TEMPLATES_PLUGIN_BASENAME', plugin_basename(__FILE__));
@@ -24,9 +24,7 @@ define('TASKIP_TEMPLATES_PLUGIN_BASENAME', plugin_basename(__FILE__));
 require_once TASKIP_TEMPLATES_PLUGIN_DIR . 'includes/class-taskip-templates.php';
 require_once TASKIP_TEMPLATES_PLUGIN_DIR . 'includes/class-taskip-post-types.php';
 require_once TASKIP_TEMPLATES_PLUGIN_DIR . 'includes/class-taskip-taxonomies.php';
-require_once TASKIP_TEMPLATES_PLUGIN_DIR . 'includes/class-taskip-shortcodes.php';
 require_once TASKIP_TEMPLATES_PLUGIN_DIR . 'includes/class-taskip-metaboxes.php';
-require_once TASKIP_TEMPLATES_PLUGIN_DIR . 'includes/class-taskip-templates-widget.php';
 require_once TASKIP_TEMPLATES_PLUGIN_DIR . 'admin/class-taskip-admin.php';
 
 // Initialize the plugin
@@ -55,7 +53,7 @@ function taskip_templates_activate() {
     $taxonomies = new Taskip_Taxonomies();
     $taxonomies->register_taxonomies();
 
-    // Flush rewrite rules
+     //Flush rewrite rules
     flush_rewrite_rules();
 }
 
