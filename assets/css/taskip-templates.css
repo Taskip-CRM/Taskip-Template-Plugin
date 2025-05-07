@@ -133,7 +133,9 @@
     display: flex;
     gap: 20px;
 }
-
+.taskip-template-type.industry a+a {
+    margin-left: 10px;
+}
 .taskip-template-view {
     background: var(--color-2);
     color: #fff;
@@ -244,11 +246,36 @@
     font-size: 1.1rem;
     color: #333;
 }
+.taskip-template-actions ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin-bottom: 30px;
+}
 
+.taskip-template-actions ul li+li {
+    margin-top: 10px;
+}
+
+.taskip-template-actions ul li i {
+    margin-right: 10px;
+    width: 25px;
+    height: 25px;
+    background-color: var(--color-2);
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.taskip-template-actions ul li {
+    display: flex;
+    align-items: center;
+}
 .taskip-filter-list {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    gap: 20px;
 }
 
 .taskip-filter-item {
@@ -468,7 +495,7 @@
 }
 
 .taskip-template-actions {
-    background: #f9f9f9;
+    background: #f6f6f6;
     padding: 1.5rem;
     border-radius: 8px;
     margin-bottom: 2rem;
@@ -494,12 +521,12 @@
 
 .taskip-demo-btn {
     background: #f0f5ff;
-    color: #4a89dc;
-    border: 1px solid #4a89dc;
+    color: var(--color-2);
+    border: 1px solid var(--color-2);
 }
 
 .taskip-signup-btn {
-    background: #4a89dc;
+    background: var(--color-2);
     color: #fff;
 }
 
@@ -508,15 +535,13 @@
 }
 
 .taskip-signup-btn:hover {
-    background: #3b7dd8;
+    background: var(--color-2);
+    color: #fff;
 }
 
-.taskip-related-templates {
-    background: #f9f9f9;
-    padding: 1.5rem;
-    border-radius: 8px;
+.taskip-templates-grid.related-item .taskip-template-content {
+    padding-top: 0;
 }
-
 .taskip-related-templates h3 {
     margin-top: 0;
     margin-bottom: 1rem;

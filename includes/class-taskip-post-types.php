@@ -82,28 +82,28 @@ class Taskip_Post_Types {
                 'block-templates' // Add block templates support
             ),
             'show_in_rest'       => true, // Required for Gutenberg editor
-            'template'           => array(
-                // Define default blocks to include when creating a new template
-                array('core/heading', array(
-                    'level' => 2,
-                    'content' => __('Template Description', 'taskip-templates'),
-                )),
-                array('core/paragraph', array(
-                    'content' => __('Enter a detailed description of your template here...', 'taskip-templates'),
-                )),
-                array('core/heading', array(
-                    'level' => 3,
-                    'content' => __('How to Use This Template', 'taskip-templates'),
-                )),
-                array('core/list', array(
-                    'values' => array(
-                        __('Step 1: Sign up for Taskip', 'taskip-templates'),
-                        __('Step 2: Select this template', 'taskip-templates'),
-                        __('Step 3: Customize to your needs', 'taskip-templates')
-                    )
-                ))
-            ),
-            'template_lock'      => false // 'all' to lock the template, false to allow adding/removing blocks
+//            'template'           => array(
+//                // Define default blocks to include when creating a new template
+//                array('core/heading', array(
+//                    'level' => 2,
+//                    'content' => __('Template Description', 'taskip-templates'),
+//                )),
+//                array('core/paragraph', array(
+//                    'content' => __('Enter a detailed description of your template here...', 'taskip-templates'),
+//                )),
+//                array('core/heading', array(
+//                    'level' => 3,
+//                    'content' => __('How to Use This Template', 'taskip-templates'),
+//                )),
+//                array('core/list', array(
+//                    'values' => array(
+//                        __('Step 1: Sign up for Taskip', 'taskip-templates'),
+//                        __('Step 2: Select this template', 'taskip-templates'),
+//                        __('Step 3: Customize to your needs', 'taskip-templates')
+//                    )
+//                ))
+//            ),
+//            'template_lock'      => false // 'all' to lock the template, false to allow adding/removing blocks
         );
 
         register_post_type('taskip_template', $args);
@@ -118,22 +118,22 @@ class Taskip_Post_Types {
             return;
         }
 
-        // Custom styles for the block editor
-        wp_enqueue_style(
-            'taskip-block-editor-styles',
-            TASKIP_TEMPLATES_PLUGIN_URL . 'assets/css/taskip-block-editor.css',
-            array('wp-edit-blocks'),
-            TASKIP_TEMPLATES_VERSION
-        );
-
-        // Custom script for block editor
-        wp_enqueue_script(
-            'taskip-block-editor-script',
-            TASKIP_TEMPLATES_PLUGIN_URL . 'assets/js/taskip-block-editor.js',
-            array('wp-blocks', 'wp-dom-ready', 'wp-edit-post'),
-            TASKIP_TEMPLATES_VERSION,
-            true
-        );
+//        // Custom styles for the block editor
+//        wp_enqueue_style(
+//            'taskip-block-editor-styles',
+//            TASKIP_TEMPLATES_PLUGIN_URL . 'assets/css/taskip-block-editor.css',
+//            array('wp-edit-blocks'),
+//            TASKIP_TEMPLATES_VERSION
+//        );
+//
+//        // Custom script for block editor
+//        wp_enqueue_script(
+//            'taskip-block-editor-script',
+//            TASKIP_TEMPLATES_PLUGIN_URL . 'assets/js/taskip-block-editor.js',
+//            array('wp-blocks', 'wp-dom-ready', 'wp-edit-post'),
+//            TASKIP_TEMPLATES_VERSION,
+//            true
+//        );
     }
 
     /**
@@ -151,18 +151,6 @@ class Taskip_Post_Types {
      * Add custom block categories for templates
      */
     public function add_block_categories($categories, $post) {
-        if ($post && $post->post_type === 'taskip_template') {
-            return array_merge(
-                $categories,
-                array(
-                    array(
-                        'slug' => 'taskip-template-blocks',
-                        'title' => __('Template Sections', 'taskip-templates'),
-                        'icon'  => 'media-document',
-                    ),
-                )
-            );
-        }
 
         return $categories;
     }

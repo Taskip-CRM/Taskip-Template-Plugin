@@ -15,11 +15,11 @@ get_header(); ?>
                 ?>
                 <h1 class="taskip-templates-title">
                     <?php
-                    if (is_tax("template_type")) {
-                        printf(__("%s Templates", "taskip-templates"), single_term_title("", false));
-                    } elseif (is_tax("template_industry")) {
-                        printf(__("Templates for %s Industry", "taskip-templates"), single_term_title("", false));
-                    }
+                        if (is_tax("template_type")) {
+                            printf(__("%s Templates", "taskip-templates"), single_term_title("", false));
+                        } elseif (is_tax("template_industry")) {
+                            printf(__("Templates for %s Industry", "taskip-templates"), single_term_title("", false));
+                        }
                     ?>
                 </h1>
 
@@ -53,40 +53,25 @@ get_header(); ?>
                                 <?php endif; ?>
 
                                 <div class="taskip-template-overlay">
-                                    <a href="<?php the_permalink(); ?>" class="taskip-template-view"><?php _e("View Template", "taskip-templates"); ?></a>
+                                    <a href="<?php the_permalink(); ?>" class="taskip-template-view"><?php _e("Preview", "taskip-templates"); ?></a>
+                                    <a href="#0" class="taskip-template-view"><?php _e("Use Template", "taskip-templates"); ?></a>
                                 </div>
                             </div>
 
                             <div class="taskip-template-content">
+                                <?php
+                                $template_type = get_the_terms(get_the_ID(), "template_type");
+                                if ($template_type) : ?>
+                                    <div class="taskip-template-type">
+                                        <a href="<?php echo esc_url(get_term_link($template_type[0])); ?>"><?php echo esc_html($template_type[0]->name); ?></a>
+                                    </div>
+                                <?php endif; ?>
                                 <h2 class="taskip-template-title">
                                     <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                                 </h2>
-
-                                <?php
-                                // If we're on an industry page, show the template type
-                                // If we're on a template type page, show the industry
-                                if (is_tax("template_industry")) {
-                                    $template_type = get_the_terms(get_the_ID(), "template_type");
-                                    if ($template_type) : ?>
-                                        <div class="taskip-template-type">
-                                            <a href="<?php echo esc_url(get_term_link($template_type[0])); ?>"><?php echo esc_html($template_type[0]->name); ?></a>
-                                        </div>
-                                    <?php endif;
-                                } elseif (is_tax("template_type")) {
-                                    $template_industry = get_the_terms(get_the_ID(), "template_industry");
-                                    if ($template_industry) : ?>
-                                        <div class="taskip-template-industry">
-                                            <a href="<?php echo esc_url(get_term_link($template_industry[0])); ?>"><?php echo esc_html($template_industry[0]->name); ?></a>
-                                        </div>
-                                    <?php endif;
-                                }
-                                ?>
-
-                                <div class="taskip-template-excerpt">
-                                    <?php the_excerpt(); ?>
-                                </div>
                             </div>
                         </div>
+
                     <?php endwhile; ?>
 
                     <div class="taskip-templates-pagination">

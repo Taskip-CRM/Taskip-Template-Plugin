@@ -52,6 +52,7 @@ class Taskip_Taxonomies {
             'labels'            => $type_labels,
             'show_ui'           => true,
             'show_admin_column' => true,
+            'show_in_rest'      => true,
             'query_var'         => true,
             'rewrite'           => array('slug' => 'template-type'),
         );
@@ -78,6 +79,7 @@ class Taskip_Taxonomies {
             'labels'            => $industry_labels,
             'show_ui'           => true,
             'show_admin_column' => true,
+            'show_in_rest'      => true,
             'query_var'         => true,
             'rewrite'           => array('slug' => 'industry'),
         );

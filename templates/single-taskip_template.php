@@ -8,10 +8,13 @@
 get_header(); ?>
 
     <div class="taskip-template-single">
-    <div class="taskip-template-container">
+    <div class="taskip-template-container container_1430">
 <?php while (have_posts()) : the_post(); ?>
     <div class="taskip-template-header">
-        <h1 class="taskip-template-title"><?php the_title(); ?></h1>
+        <div class="single-blog-main-heading margin-bottom-40">
+            <h1><?php the_title(); ?></h1>
+        </div>
+
 
         <?php
         $template_type = get_the_terms(get_the_ID(), "template_type");
@@ -27,20 +30,16 @@ get_header(); ?>
             <?php endif; ?>
 
             <?php if ($template_industry) : ?>
-                <div class="taskip-template-industry">
+                <div class="taskip-template-type industry">
                     <span class="meta-label"><?php _e("Industry:", "taskip-templates"); ?></span>
-                    <a href="<?php echo esc_url(get_term_link($template_industry[0])); ?>"><?php echo esc_html($template_industry[0]->name); ?></a>
+                    <?php
+                        foreach($template_industry as $industry){
+                            printf('<a href="%s">%s</a>',esc_url(get_term_link($industry)),esc_html($industry->name));
+                        }
+                    ?>
                 </div>
             <?php endif; ?>
 
-            <?php
-            $template_version = get_post_meta(get_the_ID(), "_taskip_template_version", true);
-            if ($template_version) : ?>
-                <div class="taskip-template-version">
-                    <span class="meta-label"><?php _e("Version:", "taskip-templates"); ?></span>
-                    <span><?php echo esc_html($template_version); ?></span>
-                </div>
-            <?php endif; ?>
         </div>
     </div>
 
@@ -62,87 +61,112 @@ get_header(); ?>
         <div class="taskip-template-content">
             <?php the_content(); ?>
         </div>
+        <div class="taskip-related-templates ">
+            <h3><?php _e("Related Templates", "taskip-templates"); ?></h3>
+            <div class="taskip-templates-grid related-item">
+            <?php
+            // Get related templates based on same template type
+            $related_args = array(
+                'post_type' => 'taskip_template',
+                'posts_per_page' => 3,
+                'post__not_in' => array(get_the_ID()),
+                'orderby' => 'rand'
+            );
 
-        <?php
-        $template_features = get_post_meta(get_the_ID(), "_taskip_template_features", true);
-        if ($template_features) : ?>
-            <div class="taskip-template-features">
-                <h3><?php _e("Template Features", "taskip-templates"); ?></h3>
-                <ul>
-                    <?php
-                    $features = explode("\n", $template_features);
-                    foreach ($features as $feature) :
-                        $feature = trim($feature);
-                        if (!empty($feature)) : ?>
-                            <li><?php echo esc_html($feature); ?></li>
-                        <?php endif;
-                    endforeach; ?>
-                </ul>
-            </div>
-        <?php endif; ?>
+            if ($template_type) {
+                $related_args['tax_query'] = array(
+                    array(
+                        'taxonomy' => 'template_type',
+                        'field' => 'term_id',
+                        'terms' => $template_type[0]->term_id
+                    )
+                );
+            }
+
+            $related_templates = new WP_Query($related_args);
+
+            if ($related_templates->have_posts()) :
+                while ($related_templates->have_posts()) : $related_templates->the_post();
+                    $related_image = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
+                    if (!$related_image) {
+                        $related_image = get_post_meta(get_the_ID(), "_taskip_preview_url", true);
+                    }
+                    ?>
+                    <div class="taskip-template-item">
+                        <div class="taskip-template-image">
+                            <?php if (has_post_thumbnail()) : ?>
+                                <a href="<?php the_permalink(); ?>">
+                                    <?php the_post_thumbnail("medium", array("class" => "taskip-template-thumb")); ?>
+                                </a>
+                            <?php else :
+                                $preview_url = get_post_meta(get_the_ID(), "_taskip_preview_url", true);
+                                if ($preview_url) : ?>
+                                    <a href="<?php the_permalink(); ?>">
+                                        <img src="<?php echo esc_url($preview_url); ?>" alt="<?php the_title_attribute(); ?>" class="taskip-template-thumb">
+                                    </a>
+                                <?php else : ?>
+                                    <a href="<?php the_permalink(); ?>">
+                                        <div class="taskip-template-placeholder"></div>
+                                    </a>
+                                <?php endif; ?>
+                            <?php endif; ?>
+
+                            <div class="taskip-template-overlay">
+                                <a href="<?php the_permalink(); ?>" class="taskip-template-view"><?php _e("Preview", "taskip-templates"); ?></a>
+                                <a href="#0" class="taskip-template-view"><?php _e("Use Template", "taskip-templates"); ?></a>
+                            </div>
+                        </div>
+
+                        <div class="taskip-template-content">
+                            <?php
+                            $template_type = get_the_terms(get_the_ID(), "template_type");
+                            if ($template_type) : ?>
+                                <div class="taskip-template-type">
+                                    <a href="<?php echo esc_url(get_term_link($template_type[0])); ?>"><?php echo esc_html($template_type[0]->name); ?></a>
+                                </div>
+                            <?php endif; ?>
+                            <h2 class="taskip-template-title">
+                                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                            </h2>
+                        </div>
+                    </div>
+                <?php endwhile;
+                wp_reset_postdata();
+            else : ?>
+                <p><?php _e("No related templates found.", "taskip-templates"); ?></p>
+            <?php endif; ?>
+        </div>
+
+        </div>
     </div>
 
     <div class="taskip-template-sidebar">
     <div class="taskip-template-actions">
-        <h3><?php _e("Template Actions", "taskip-templates"); ?></h3>
-
+        <h3><?php _e("Your pre-built template is ready", "taskip-templates"); ?></h3>
+            <?php
+            $template_features = get_post_meta(get_the_ID(), "_taskip_template_features", true);
+            if ($template_features) : ?>
+            <ul>
+                <?php
+                $features = explode("\n", $template_features);
+                foreach ($features as $feature) :
+                    $feature = trim($feature);
+                    if (!empty($feature)) : ?>
+                        <li><i class="fa-regular fa-circle-check"></i> <?php echo esc_html($feature); ?></li>
+                    <?php endif;
+                endforeach; ?>
+            </ul>
         <?php
+            endif;
         $demo_url = get_post_meta(get_the_ID(), "_taskip_demo_url", true);
         if ($demo_url) : ?>
             <a href="<?php echo esc_url($demo_url); ?>" class="taskip-demo-btn" target="_blank"><?php _e("View Demo", "taskip-templates"); ?></a>
         <?php endif; ?>
 
-        <a href="https://taskip.com/signup" class="taskip-signup-btn"><?php _e("Use This Template", "taskip-templates"); ?></a>
+        <a href="https://taskip.app/register?ref=website&template=&type=" class="taskip-signup-btn"><?php _e("Use This Template", "taskip-templates"); ?></a>
     </div>
 
-    <div class="taskip-related-templates">
-    <h3><?php _e("Related Templates", "taskip-templates"); ?></h3>
 
-    <?php
-    // Get related templates based on same template type
-    $related_args = array(
-        'post_type' => 'taskip_template',
-        'posts_per_page' => 3,
-        'post__not_in' => array(get_the_ID()),
-        'orderby' => 'rand'
-    );
-
-    if ($template_type) {
-        $related_args['tax_query'] = array(
-            array(
-                'taxonomy' => 'template_type',
-                'field' => 'term_id',
-                'terms' => $template_type[0]->term_id
-            )
-        );
-    }
-
-    $related_templates = new WP_Query($related_args);
-
-    if ($related_templates->have_posts()) :
-        while ($related_templates->have_posts()) : $related_templates->the_post();
-            $related_image = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
-            if (!$related_image) {
-                $related_image = get_post_meta(get_the_ID(), "_taskip_preview_url", true);
-            }
-            ?>
-            <div class="taskip-related-item">
-                <a href="<?php the_permalink(); ?>" class="taskip-related-link">
-                    <?php if ($related_image) : ?>
-                        <img src="<?php echo esc_url($related_image); ?>" alt="<?php the_title_attribute(); ?>" class="taskip-related-image">
-                    <?php else : ?>
-                        <div class="taskip-related-placeholder"></div>
-                    <?php endif; ?>
-                    <h4 class="taskip-related-title"><?php the_title(); ?></h4>
-                </a>
-            </div>
-        <?php endwhile;
-        wp_reset_postdata();
-    else : ?>
-        <p><?php _e("No related templates found.", "taskip-templates"); ?></p>
-    <?php endif; ?>
-    </div>
-    </div>
     </div>
 <?php endwhile; ?>
     </div>
