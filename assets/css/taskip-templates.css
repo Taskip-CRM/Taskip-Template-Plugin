@@ -1159,3 +1159,7 @@
 .taskip-template-content.single-blog-body ul li + li {
     margin-top: 8px;
 }
+.taskip-template-content.single-blog-body a {
+    text-decoration: underline;
+    font-weight: 500;
+}
