@@ -1149,6 +1149,7 @@
 .taskip-template-content.single-blog-body p {
     color: var(--color-1);
     line-height: 2;
+    font-weight: 500;
 }
 
 .taskip-template-content.single-blog-body ul {
