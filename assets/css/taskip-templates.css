@@ -153,8 +153,7 @@
 }
 
 .taskip-template-view:hover {
-    background: #3b7dd8;
-    color: #fff;
+    opacity: 0.8;
 }
 
 .taskip-template-content {
@@ -173,6 +172,7 @@
 .taskip-template-title a {
     color: #333;
     text-decoration: none;
+    transition: all 300ms;
 }
 
 .taskip-template-title a:hover {
@@ -707,9 +707,9 @@
 .taskip-back-button {
     display: inline-block;
     padding: 0.8rem 1.5rem;
-    background: #f0f5ff;
-    color: #4a89dc;
-    border: 1px solid #4a89dc;
+    background: #e9fbf7;
+    color: #00b289;
+    border: 1px solid #00b289;
     border-radius: 4px;
     text-decoration: none;
     font-weight: bold;
