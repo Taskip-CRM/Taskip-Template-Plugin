@@ -7,8 +7,8 @@
 
 get_header(); ?>
 
-    <div class="taskip-template-single">
-    <div class="taskip-template-container container_1430">
+    <div class="taskip-template-single taskip-single-blog-part">
+    <div class="taskip-template-container container single-blog-body-wraper">
 <?php while (have_posts()) : the_post(); ?>
     <div class="taskip-template-header">
         <div class="single-blog-main-heading margin-bottom-40">
@@ -58,7 +58,7 @@ get_header(); ?>
             <?php endif; ?>
         </div>
 
-        <div class="taskip-template-content">
+        <div class="taskip-template-content single-blog-body">
             <?php the_content(); ?>
         </div>
         <div class="taskip-related-templates ">
