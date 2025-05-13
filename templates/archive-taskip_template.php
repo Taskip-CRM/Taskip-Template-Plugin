@@ -14,7 +14,7 @@ get_header(); ?>
                     <div class="col-md-12">
                         <div class="subtitle-two"><?php echo esc_html__('Taskip Templates Library','taskip-templates')?></div>
                         <h1 class="taskip-second-heading-three text-center"><?php echo esc_html__('Business Agreements, Proposals, Contracts, SOPs & Scope of Work Documents','taskip-templates')?></h1>
-                        <p><?php _e("Welcome to the Taskip Templates Library. your smart shortcut to getting things done faster. Whether you're drafting a business agreement, writing a proposal, creating a contract, building an SOP, or outlining a scope of work, our ready-to-use templates are built to help you move quicker and work smarter. Perfect for modern teams, freelancers, and growing businesses.", "taskip-templates"); ?></p>
+                        <p class="template-section-para"><?php _e("Welcome to the Taskip Templates Library. your smart shortcut to getting things done faster. Whether you're drafting a business agreement, writing a proposal, creating a contract, building an SOP, or outlining a scope of work, our ready-to-use templates are built to help you move quicker and work smarter. Perfect for modern teams, freelancers, and growing businesses.", "taskip-templates"); ?></p>
                     </div>
                 </div>
             </header>
