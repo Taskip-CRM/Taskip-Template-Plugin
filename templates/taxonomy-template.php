@@ -32,29 +32,24 @@ get_header(); ?>
 
             <div class="taskip-templates-grid">
                 <?php if (have_posts()) : ?>
-                    <?php while (have_posts()) : the_post(); ?>
+                    <?php while (have_posts()) : the_post();
+                        $preview_url = get_post_meta(get_the_ID(), "_taskip_preview_url", true);
+                    ?>
                         <div class="taskip-template-item">
                             <div class="taskip-template-image">
                                 <?php if (has_post_thumbnail()) : ?>
                                     <a href="<?php the_permalink(); ?>">
                                         <?php the_post_thumbnail("medium", array("class" => "taskip-template-thumb")); ?>
                                     </a>
-                                <?php else :
-                                    $preview_url = get_post_meta(get_the_ID(), "_taskip_preview_url", true);
-                                    if ($preview_url) : ?>
-                                        <a href="<?php the_permalink(); ?>">
-                                            <img src="<?php echo esc_url($preview_url); ?>" alt="<?php the_title_attribute(); ?>" class="taskip-template-thumb">
-                                        </a>
-                                    <?php else : ?>
+                                <?php else :?>
                                         <a href="<?php the_permalink(); ?>">
                                             <div class="taskip-template-placeholder"></div>
                                         </a>
-                                    <?php endif; ?>
                                 <?php endif; ?>
 
                                 <div class="taskip-template-overlay">
                                     <a href="<?php the_permalink(); ?>" class="taskip-template-view"><?php _e("Preview", "taskip-templates"); ?></a>
-                                    <a href="#0" class="taskip-template-view"><?php _e("Use Template", "taskip-templates"); ?></a>
+                                    <a href="<?php echo esc_url($preview_url);?>" class="taskip-template-view"><?php _e("Use Template", "taskip-templates"); ?></a>
                                 </div>
                             </div>
 

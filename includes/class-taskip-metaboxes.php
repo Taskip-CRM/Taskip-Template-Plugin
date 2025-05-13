@@ -57,7 +57,6 @@ class Taskip_Metaboxes {
 
         // Get saved metadata
         $preview_url = get_post_meta($post->ID, '_taskip_preview_url', true);
-        $demo_url = get_post_meta($post->ID, '_taskip_demo_url', true);
         $template_features = get_post_meta($post->ID, '_taskip_template_features', true);
 
         ?>
@@ -66,12 +65,6 @@ class Taskip_Metaboxes {
                 <label for="taskip_preview_url"><?php _e('Preview URL:', 'taskip-templates'); ?></label>
                 <input type="url" id="taskip_preview_url" name="taskip_preview_url" value="<?php echo esc_url($preview_url); ?>" class="widefat">
                 <span class="description"><?php _e('URL for the template preview image (alternative to featured image)', 'taskip-templates'); ?></span>
-            </p>
-
-            <p class="taskip-meta-field">
-                <label for="taskip_demo_url"><?php _e('Demo URL:', 'taskip-templates'); ?></label>
-                <input type="url" id="taskip_demo_url" name="taskip_demo_url" value="<?php echo esc_url($demo_url); ?>" class="widefat">
-                <span class="description"><?php _e('URL to view a live demo of the template', 'taskip-templates'); ?></span>
             </p>
             <div class="taskip-meta-field">
                 <label for="taskip_template_features"><?php _e('Template Features:', 'taskip-templates'); ?></label>
@@ -115,10 +108,6 @@ class Taskip_Metaboxes {
         // Save metadata
         if (isset($_POST['taskip_preview_url'])) {
             update_post_meta($post_id, '_taskip_preview_url', esc_url_raw($_POST['taskip_preview_url']));
-        }
-
-        if (isset($_POST['taskip_demo_url'])) {
-            update_post_meta($post_id, '_taskip_demo_url', esc_url_raw($_POST['taskip_demo_url']));
         }
 
         if (isset($_POST['taskip_template_features'])) {

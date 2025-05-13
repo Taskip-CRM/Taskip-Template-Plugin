@@ -48,13 +48,8 @@ get_header(); ?>
         <div class="taskip-template-image">
             <?php if (has_post_thumbnail()) : ?>
                 <?php the_post_thumbnail("large", array("class" => "taskip-main-image")); ?>
-            <?php else :
-                $preview_url = get_post_meta(get_the_ID(), "_taskip_preview_url", true);
-                if ($preview_url) : ?>
-                    <img src="<?php echo esc_url($preview_url); ?>" alt="<?php the_title_attribute(); ?>" class="taskip-main-image">
-                <?php else : ?>
+            <?php else : ?>
                     <div class="taskip-template-placeholder"></div>
-                <?php endif; ?>
             <?php endif; ?>
         </div>
 
@@ -88,9 +83,7 @@ get_header(); ?>
             if ($related_templates->have_posts()) :
                 while ($related_templates->have_posts()) : $related_templates->the_post();
                     $related_image = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
-                    if (!$related_image) {
-                        $related_image = get_post_meta(get_the_ID(), "_taskip_preview_url", true);
-                    }
+                    $preview_url = get_post_meta(get_the_ID(), "_taskip_preview_url", true);
                     ?>
                     <div class="taskip-template-item">
                         <div class="taskip-template-image">
@@ -98,22 +91,15 @@ get_header(); ?>
                                 <a href="<?php the_permalink(); ?>">
                                     <?php the_post_thumbnail("medium", array("class" => "taskip-template-thumb")); ?>
                                 </a>
-                            <?php else :
-                                $preview_url = get_post_meta(get_the_ID(), "_taskip_preview_url", true);
-                                if ($preview_url) : ?>
-                                    <a href="<?php the_permalink(); ?>">
-                                        <img src="<?php echo esc_url($preview_url); ?>" alt="<?php the_title_attribute(); ?>" class="taskip-template-thumb">
-                                    </a>
-                                <?php else : ?>
-                                    <a href="<?php the_permalink(); ?>">
-                                        <div class="taskip-template-placeholder"></div>
-                                    </a>
-                                <?php endif; ?>
+                            <?php else: ?>
+                                <a href="<?php the_permalink(); ?>">
+                                    <div class="taskip-template-placeholder"></div>
+                                </a>
                             <?php endif; ?>
 
                             <div class="taskip-template-overlay">
                                 <a href="<?php the_permalink(); ?>" class="taskip-template-view"><?php _e("Preview", "taskip-templates"); ?></a>
-                                <a href="#0" class="taskip-template-view"><?php _e("Use Template", "taskip-templates"); ?></a>
+                                <a href="<?php echo esc_url($preview_url);?>" class="taskip-template-view"><?php _e("Use Template", "taskip-templates"); ?></a>
                             </div>
                         </div>
 
@@ -158,12 +144,9 @@ get_header(); ?>
             </ul>
         <?php
             endif;
-        $demo_url = get_post_meta(get_the_ID(), "_taskip_demo_url", true);
-        if ($demo_url) : ?>
-            <a href="<?php echo esc_url($demo_url); ?>" class="taskip-demo-btn" target="_blank"><?php _e("View Demo", "taskip-templates"); ?></a>
-        <?php endif; ?>
+        $preview_url = get_post_meta(get_the_ID(), "_taskip_preview_url", true); ?>
 
-        <a href="https://taskip.app/register?ref=website&template=&type=" class="taskip-signup-btn"><?php _e("Use This Template", "taskip-templates"); ?></a>
+        <a href="<?php echo esc_url($preview_url)?>" class="taskip-signup-btn" target="_blank"><?php _e("Use This Template", "taskip-templates"); ?></a>
     </div>
 
 
