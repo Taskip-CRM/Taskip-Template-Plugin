@@ -63,7 +63,7 @@ get_header(); ?>
             // Get related templates based on same template type
             $related_args = array(
                 'post_type' => 'taskip_template',
-                'posts_per_page' => 3,
+                'posts_per_page' => 4,
                 'post__not_in' => array(get_the_ID()),
                 'orderby' => 'rand'
             );
