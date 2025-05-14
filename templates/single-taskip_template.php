@@ -56,7 +56,7 @@ get_header(); ?>
         <div class="taskip-template-content single-blog-body">
             <?php the_content(); ?>
         </div>
-        <div class="taskip-related-templates ">
+        <div class="taskip-related-templates margin-bottom-60">
             <h3><?php _e("Related Templates", "taskip-templates"); ?></h3>
             <div class="taskip-templates-grid related-item">
             <?php
