@@ -89,7 +89,7 @@ get_header(); ?>
                         <div class="taskip-template-image">
                             <?php if (has_post_thumbnail()) : ?>
                                 <a href="<?php the_permalink(); ?>">
-                                    <?php the_post_thumbnail("medium", array("class" => "taskip-template-thumb")); ?>
+                                    <?php the_post_thumbnail("large", array("class" => "taskip-template-thumb")); ?>
                                 </a>
                             <?php else: ?>
                                 <a href="<?php the_permalink(); ?>">

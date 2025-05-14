@@ -13,7 +13,7 @@ get_header(); ?>
                 <?php
                 $term = get_queried_object();
                 ?>
-                <h1 class="taskip-templates-title">
+                <h1 class="taskip-templates-title margin-bottom-60">
                     <?php
                         if (is_tax("template_type")) {
                             printf(__("%s Templates", "taskip-templates"), single_term_title("", false));
@@ -39,7 +39,7 @@ get_header(); ?>
                             <div class="taskip-template-image">
                                 <?php if (has_post_thumbnail()) : ?>
                                     <a href="<?php the_permalink(); ?>">
-                                        <?php the_post_thumbnail("medium", array("class" => "taskip-template-thumb")); ?>
+                                        <?php the_post_thumbnail("large", array("class" => "taskip-template-thumb")); ?>
                                     </a>
                                 <?php else :?>
                                         <a href="<?php the_permalink(); ?>">
