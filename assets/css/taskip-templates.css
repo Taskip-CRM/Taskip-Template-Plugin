@@ -1211,3 +1211,8 @@
     text-decoration: underline;
     font-weight: 500;
 }
+
+.taskip-template-content.single-blog-body h3, h2 {
+    margin: 1rem 0;
+    font-weight: 700;
+}
