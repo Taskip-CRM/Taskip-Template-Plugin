@@ -298,6 +298,7 @@
     margin: 0;
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 .taskip-filter-item {
