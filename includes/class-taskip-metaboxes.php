@@ -59,8 +59,8 @@ class Taskip_Metaboxes {
         $preview_url = get_post_meta($post->ID, '_taskip_preview_url', true);
         $template_features = get_post_meta($post->ID, '_taskip_template_features', true);
         $preview_url = !empty($preview_url) ? $preview_url :'https://taskip.app/templates/---template--slug--?type=document';
-        $template_features =  !empty($template_features) ? $template_features :  "Expert-designed and ready-to-use\n
-Customize it for your team\n
+        $template_features =  !empty($template_features) ? $template_features :  "Expert-designed and ready-to-use
+Customize it for your team
 Used by 250+ professionals";
         ?>
         <div class="taskip-meta-section">
