@@ -1,86 +1,79 @@
 /**
  * Taskip Templates Showcase Frontend Scripts
  */
-(function($) {
-    'use strict';
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('template-search-input');
+    const templatesGrid = document.querySelector('.taskip-templates-grid');
+    const searchWrapper = document.querySelector('.search-input-wrapper');
+    let debounceTimer;
+    let currentRequest = null;
 
-    // Document ready
-    $(document).ready(function() {
-        // Initialize template filters
-        initTemplateFilters();
+    function debounce(func, wait) {
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(debounceTimer);
+                func(...args);
+            };
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(later, wait);
+        };
+    }
 
-        // Initialize image lightbox
-        initImageLightbox();
+    function setLoadingState(isLoading) {
+        if (isLoading) {
+            searchWrapper.classList.add('is-loading');
+            templatesGrid.classList.add('is-loading');
+        } else {
+            searchWrapper.classList.remove('is-loading');
+            templatesGrid.classList.remove('is-loading');
+        }
+    }
+
+
+    const performSearch = debounce(function(searchTerm) {
+        // Abort previous request if it exists
+        if (currentRequest) {
+            currentRequest.abort();
+        }
+
+        setLoadingState(true);
+
+        const data = new FormData();
+        data.append('action', 'template_search');
+        data.append('search', searchTerm);
+        data.append('nonce', taskipTemplates.nonce);
+
+        // Create a new AbortController
+        const controller = new AbortController();
+        currentRequest = controller;
+
+        fetch(taskipTemplates.ajaxurl, {
+            method: 'POST',
+            body: data,
+            signal: controller.signal
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    templatesGrid.innerHTML = data.data;
+                }
+            })
+            .catch(error => {
+                if (error.name === 'AbortError') {
+                    // Request was aborted, do nothing
+                    return;
+                }
+                console.error('Error:', error);
+            })
+            .finally(() => {
+                setLoadingState(false);
+                currentRequest = null;
+            });
+    }, 500);
+
+    searchInput.addEventListener('input', function(e) {
+        const searchTerm = e.target.value.trim();
+        performSearch(searchTerm);
     });
 
-    /**
-     * Initialize template filters
-     */
-    function initTemplateFilters() {
-        var $filterForm = $('.taskip-filter-form');
-
-        if ($filterForm.length) {
-            // Handle filter change
-            $filterForm.find('select').on('change', function() {
-                $filterForm.submit();
-            });
-
-            // Handle mobile filter toggle
-            $('.taskip-filter-toggle').on('click', function(e) {
-                e.preventDefault();
-                $('.taskip-templates-filters').slideToggle();
-                $(this).toggleClass('active');
-            });
-        }
-    }
-
-    /**
-     * Initialize image lightbox
-     */
-    function initImageLightbox() {
-        // Create lightbox container if it doesn't exist
-        if ($('#taskip-lightbox').length === 0) {
-            $('body').append(
-                '<div id="taskip-lightbox" class="taskip-lightbox">' +
-                '<div class="taskip-lightbox-backdrop"></div>' +
-                '<div class="taskip-lightbox-content">' +
-                '<img src="" class="taskip-lightbox-image" alt="Template Preview">' +
-                '<button type="button" class="taskip-lightbox-close">&times;</button>' +
-                '</div>' +
-                '</div>'
-            );
-
-            // Add CSS for lightbox
-            var lightboxStyles =
-                '.taskip-lightbox { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; }' +
-                '.taskip-lightbox-backdrop { position: fixed; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); }' +
-                '.taskip-lightbox-content { position: relative; max-width: 90%; max-height: 90vh; margin: 2% auto; }' +
-                '.taskip-lightbox-image { display: block; width: 100%; height: auto; max-height: 90vh; object-fit: contain; }' +
-                '.taskip-lightbox-close { position: absolute; top: -40px; right: 0; color: #fff; background: none; border: none; font-size: 30px; cursor: pointer; }';
-
-            $('<style>').text(lightboxStyles).appendTo('head');
-        }
-
-        // Click event for template images
-        $('.taskip-main-image, .taskip-template-thumb').on('click', function(e) {
-            e.preventDefault();
-
-            var imgSrc = $(this).attr('src');
-            $('.taskip-lightbox-image').attr('src', imgSrc);
-            $('#taskip-lightbox').fadeIn();
-        });
-
-        // Close lightbox
-        $(document).on('click', '.taskip-lightbox-close, .taskip-lightbox-backdrop', function() {
-            $('#taskip-lightbox').fadeOut();
-        });
-
-        // Close lightbox on ESC key
-        $(document).keyup(function(e) {
-            if (e.key === "Escape") {
-                $('#taskip-lightbox').fadeOut();
-            }
-        });
-    }
-
-})(jQuery);
+});

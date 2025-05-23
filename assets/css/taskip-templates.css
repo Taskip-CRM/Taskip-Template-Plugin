@@ -1218,3 +1218,34 @@
     margin: 1rem 0;
     font-weight: 700;
 }
+.search-input-wrapper {
+    position: relative;
+}
+
+.search-loading-spinner {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    display: none;
+}
+
+@keyframes spin {
+    0% { transform: translateY(-50%) rotate(0deg); }
+    100% { transform: translateY(-50%) rotate(360deg); }
+}
+
+.is-loading .search-loading-spinner {
+    display: block;
+}
+
+.is-loading .taskip-templates-grid {
+    opacity: 0.6;
+    pointer-events: none;
+}

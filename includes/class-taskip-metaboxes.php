@@ -58,12 +58,15 @@ class Taskip_Metaboxes {
         // Get saved metadata
         $preview_url = get_post_meta($post->ID, '_taskip_preview_url', true);
         $template_features = get_post_meta($post->ID, '_taskip_template_features', true);
-
+        $preview_url = $preview_url ?? 'https://taskip.app/templates/---template--slug--?type=document';
+        $template_features = $template_features ?? "Expert-designed and ready-to-use\n
+Customize it for your team\n
+Used by 250+ professionals";
         ?>
         <div class="taskip-meta-section">
             <p class="taskip-meta-field">
                 <label for="taskip_preview_url"><?php _e('Preview URL:', 'taskip-templates'); ?></label>
-                <input type="url" id="taskip_preview_url" name="taskip_preview_url" value="<?php echo esc_url($preview_url); ?>" class="widefat">
+                <input type="url" id="taskip_preview_url" name="taskip_preview_url" value="<?php echo esc_url($preview_url) ; ?>" class="widefat">
                 <span class="description"><?php _e('URL for the template preview image (alternative to featured image)', 'taskip-templates'); ?></span>
             </p>
             <div class="taskip-meta-field">
