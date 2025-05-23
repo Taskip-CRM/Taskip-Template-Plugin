@@ -133,6 +133,9 @@ This plugin is licensed under the GPL v2 or later.
 Developed by [Taskip](https://taskip.net)
 
 ## Contributing
+- [Taskip](https://taskip.net)
+- [Sharifur](https://github.com/sharifur)
+
 
 We welcome contributions! Please feel free to submit a Pull Request.
 
