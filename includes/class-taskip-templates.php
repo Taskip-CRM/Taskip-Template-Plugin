@@ -44,6 +44,10 @@ class Taskip_Templates {
 
         // Load template files
         add_filter('template_include', array($this, 'template_loader'));
+
+        add_action('wp_ajax_template_search', array($this, 'handle_template_search') );
+        add_action('wp_ajax_nopriv_template_search', array($this,'handle_template_search'));
+
     }
 
 
@@ -76,9 +80,70 @@ class Taskip_Templates {
             // Localize script
             wp_localize_script('taskip-templates-script', 'taskipTemplates', array(
                 'ajaxurl' => admin_url('admin-ajax.php'),
-                'nonce' => wp_create_nonce('taskip-templates-nonce')
+                'nonce' => wp_create_nonce('template_search_nonce')
             ));
+
         }
+    }
+    function handle_template_search() {
+        check_ajax_referer('template_search_nonce', 'nonce');
+
+        $search = sanitize_text_field($_POST['search']);
+
+        $args = array(
+            'post_type' => 'taskip_template', // Replace with your custom post type if needed
+            'posts_per_page' => -1,
+            's' => $search
+        );
+
+        $query = new WP_Query($args);
+        ob_start();
+
+        if ($query->have_posts()) :
+            while ($query->have_posts()) : $query->the_post();
+                $preview_url = get_post_meta(get_the_ID(), "_taskip_preview_url", true);
+                ?>
+                <div class="taskip-template-item">
+                    <div class="taskip-template-image">
+                        <?php if (has_post_thumbnail()) : ?>
+                            <a href="<?php the_permalink(); ?>">
+                                <?php the_post_thumbnail("large", array("class" => "taskip-template-thumb")); ?>
+                            </a>
+                        <?php else :?>
+                            <a href="<?php the_permalink(); ?>">
+                                <div class="taskip-template-placeholder"></div>
+                            </a>
+                        <?php endif; ?>
+
+                        <div class="taskip-template-overlay">
+                            <a href="<?php the_permalink(); ?>" class="taskip-template-view"><?php _e("Preview", "taskip-templates"); ?></a>
+                            <a href="<?php echo esc_url($preview_url); ?>" target="_blank" class="taskip-template-view"><?php _e("Use Template", "taskip-templates"); ?></a>
+                        </div>
+                    </div>
+
+                    <div class="taskip-template-content">
+                        <?php
+                        $template_type = get_the_terms(get_the_ID(), "template_type");
+                        if ($template_type) : ?>
+                            <div class="taskip-template-type">
+                                <a href="<?php echo esc_url(get_term_link($template_type[0])); ?>"><?php echo esc_html($template_type[0]->name); ?></a>
+                            </div>
+                        <?php endif; ?>
+                        <h2 class="taskip-template-title">
+                            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                        </h2>
+                    </div>
+                </div>
+            <?php endwhile;
+        else : ?>
+            <p class="taskip-no-templates"><?php _e("No templates found.", "taskip-templates"); ?></p>
+        <?php endif;
+
+        wp_reset_postdata();
+
+        $html = ob_get_clean();
+        wp_send_json_success($html);
+        die();
     }
 
     /**

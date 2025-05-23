@@ -74,10 +74,14 @@ get_header(); ?>
                     </ul>
                 </div>
                 <div class="template-search-form-wrapper">
-                    <form action="#" method="get">
-                        <input type="text" name="search" value="" placeholder="<?php echo esc_html__('Search Templates','taskip-templates');?>">
+                    <form id="template-search-form" action="#" method="get" onsubmit="return false;">
+                        <div class="search-input-wrapper">
+                            <input type="text" id="template-search-input" name="search" value="" placeholder="<?php echo esc_html__('Search Templates','taskip-templates');?>">
+                            <div class="search-loading-spinner"></div>
+                        </div>
                     </form>
                 </div>
+
             </div>
 
             <div class="taskip-templates-grid">
