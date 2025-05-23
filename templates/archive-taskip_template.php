@@ -118,18 +118,14 @@ get_header(); ?>
                             </div>
                         </div>
                     <?php endwhile; ?>
-
-                    <div class="taskip-templates-pagination">
-                        <?php
-                        echo paginate_links(array(
-                            "prev_text" => __("&laquo; Previous", "taskip-templates"),
-                            "next_text" => __("Next &raquo;", "taskip-templates")
-                        ));
-                        ?>
-                    </div>
                 <?php else : ?>
                     <p class="taskip-no-templates"><?php _e("No templates found.", "taskip-templates"); ?></p>
                 <?php endif; ?>
+            </div>
+            <div class="taskip-templates-pagination">
+                <div class="blog-pagination-wraper">
+                    <?php Taskip()->post_pagination();?>
+                </div>
             </div>
         </div>
     </div>

@@ -431,7 +431,7 @@
 }
 
 .taskip-templates-pagination .page-numbers.current {
-    background: #4a89dc;
+    background: var(--color-2);
     color: #fff;
 }
 
