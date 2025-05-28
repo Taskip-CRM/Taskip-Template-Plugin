@@ -82,31 +82,57 @@ class Taskip_Post_Types {
                 'block-templates' // Add block templates support
             ),
             'show_in_rest'       => true, // Required for Gutenberg editor
-//            'template'           => array(
-//                // Define default blocks to include when creating a new template
-//                array('core/heading', array(
-//                    'level' => 2,
-//                    'content' => __('Template Description', 'taskip-templates'),
-//                )),
-//                array('core/paragraph', array(
-//                    'content' => __('Enter a detailed description of your template here...', 'taskip-templates'),
-//                )),
-//                array('core/heading', array(
-//                    'level' => 3,
-//                    'content' => __('How to Use This Template', 'taskip-templates'),
-//                )),
-//                array('core/list', array(
-//                    'values' => array(
-//                        __('Step 1: Sign up for Taskip', 'taskip-templates'),
-//                        __('Step 2: Select this template', 'taskip-templates'),
-//                        __('Step 3: Customize to your needs', 'taskip-templates')
-//                    )
-//                ))
-//            ),
-//            'template_lock'      => false // 'all' to lock the template, false to allow adding/removing blocks
         );
 
         register_post_type('taskip_template', $args);
+
+
+        $labels = array(
+            'name'               => _x('Use Cases', 'post type general name', 'taskip-templates'),
+            'singular_name'      => _x('Use Cases', 'post type singular name', 'taskip-templates'),
+            'menu_name'          => _x('Use Cases', 'admin menu', 'taskip-templates'),
+            'name_admin_bar'     => _x('Use Case', 'add new on admin bar', 'taskip-templates'),
+            'add_new'            => _x('Add New', 'template', 'taskip-templates'),
+            'add_new_item'       => __('Add New Use Case', 'taskip-templates'),
+            'new_item'           => __('New Use Case', 'taskip-templates'),
+            'edit_item'          => __('Edit Use Case', 'taskip-templates'),
+            'view_item'          => __('View Use Case', 'taskip-templates'),
+            'all_items'          => __('All Use Cases', 'taskip-templates'),
+            'search_items'       => __('Search Use Cases', 'taskip-templates'),
+            'parent_item_colon'  => __('Parent Use Cases:', 'taskip-templates'),
+            'not_found'          => __('No Use Cases found.', 'taskip-templates'),
+            'not_found_in_trash' => __('No Use Cases found in Trash.', 'taskip-templates')
+        );
+
+        $args = array(
+            'labels'             => $labels,
+            'description'        => __('Taskip use cases.', 'taskip-templates'),
+            'public'             => true,
+            'publicly_queryable' => true,
+            'show_ui'            => true,
+            'show_in_menu'       => true,
+            'query_var'          => true,
+            'rewrite'            => array('slug' => 'use-cases'),
+            'capability_type'    => 'post',
+            'has_archive'        => true,
+            'hierarchical'       => false,
+            'menu_position'      => null,
+            'menu_icon'          => 'dashicons-media-document',
+            'supports'           => array(
+                'title',
+                'editor',
+                'author',
+                'thumbnail',
+                'excerpt',
+                'custom-fields',
+                'revisions',
+                'block-templates' // Add block templates support
+            ),
+            'show_in_rest'       => true, // Required for Gutenberg editor
+        );
+
+        register_post_type('taskip_usecases', $args);
+
     }
 
     /**
@@ -118,22 +144,6 @@ class Taskip_Post_Types {
             return;
         }
 
-//        // Custom styles for the block editor
-//        wp_enqueue_style(
-//            'taskip-block-editor-styles',
-//            TASKIP_TEMPLATES_PLUGIN_URL . 'assets/css/taskip-block-editor.css',
-//            array('wp-edit-blocks'),
-//            TASKIP_TEMPLATES_VERSION
-//        );
-//
-//        // Custom script for block editor
-//        wp_enqueue_script(
-//            'taskip-block-editor-script',
-//            TASKIP_TEMPLATES_PLUGIN_URL . 'assets/js/taskip-block-editor.js',
-//            array('wp-blocks', 'wp-dom-ready', 'wp-edit-post'),
-//            TASKIP_TEMPLATES_VERSION,
-//            true
-//        );
     }
 
     /**
