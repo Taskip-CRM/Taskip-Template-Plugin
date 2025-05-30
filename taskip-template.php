@@ -2,8 +2,8 @@
 /**
  * Plugin Name: Taskip Templates Showcase
  * Plugin URI: https://taskip.com
- * Description: A plugin to showcase Taskip document templates with custom URL structure
- * Version: 1.1.0
+ * Description: A plugin to showcase Taskip document templates and Usecases with custom URL structure
+ * Version: 1.2.0
  * Author: Taskip
  * Author URI: https://taskip.com
  * Text Domain: taskip-templates
@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('TASKIP_TEMPLATES_VERSION', '1.1.0');
+define('TASKIP_TEMPLATES_VERSION', '1.2.0');
 define('TASKIP_TEMPLATES_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('TASKIP_TEMPLATES_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('TASKIP_TEMPLATES_PLUGIN_BASENAME', plugin_basename(__FILE__));
