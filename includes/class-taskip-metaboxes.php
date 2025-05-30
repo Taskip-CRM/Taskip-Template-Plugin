@@ -70,18 +70,18 @@ class Taskip_Metaboxes {
         wp_nonce_field('taskip_usecases_meta', 'taskip_usecases_meta_nonce');
 
         // Get saved metadata
-        $support = get_post_meta($post->ID, '_taskip_book_demo_url', true);
-        $description = get_post_meta($post->ID, '_taskip_description', true);
+        $support = get_post_meta($post->ID, '_taskip_usecase_book_demo_url', true);
+        $description = get_post_meta($post->ID, '_taskip_usecase_description', true);
         ?>
         <div class="taskip-meta-section">
             <div class="taskip-meta-field">
-                <label for="taskip_book_demo_url"><?php _e('Book Demo URL:', 'taskip-templates'); ?></label>
-                <input id="taskip_book_demo_url" name="taskip_book_demo_url" class="widefat" value="<?php echo esc_url($support); ?>" />
+                <label for="_taskip_usecase_book_demo_url"><?php _e('Book Demo URL:', 'taskip-templates'); ?></label>
+                <input id="taskip_usecase_book_demo_url" name="_taskip_usecase_book_demo_url" class="widefat" value="<?php echo esc_url($support); ?>" />
                 <span class="description"><?php _e('book demo meeting url', 'taskip-templates'); ?></span>
             </div>
             <div class="taskip-meta-field">
-                <label for="taskip_description"><?php _e('Description:', 'taskip-templates'); ?></label>
-                <textarea id="taskip_description" name="taskip_description" class="widefat" rows="5"><?php echo esc_textarea($description); ?></textarea>
+                <label for="taskip_usecase_description"><?php _e('Description:', 'taskip-templates'); ?></label>
+                <textarea id="taskip_usecase_description" name="taskip_usecase_description" class="widefat" rows="5"><?php echo esc_textarea($description); ?></textarea>
                 <span class="description"><?php _e('Detailed description of the use case', 'taskip-templates'); ?></span>
             </div>
         </div>
@@ -169,11 +169,11 @@ Used by 250+ professionals";
             }
 
             // Save usecases metadata
-            if (isset($_POST['taskip_book_demo_url'])) {
-                update_post_meta($post_id, '_taskip_book_demo_url', sanitize_textarea_field($_POST['taskip_book_demo_url']));
+            if (isset($_POST['_taskip_usecase_book_demo_url'])) {
+                update_post_meta($post_id, '_taskip_usecase_book_demo_url', sanitize_textarea_field($_POST['_taskip_usecase_book_demo_url']));
             }
-            if (isset($_POST['taskip_description'])) {
-                update_post_meta($post_id, '_taskip_description', sanitize_textarea_field($_POST['taskip_description']));
+            if (isset($_POST['taskip_usecase_description'])) {
+                update_post_meta($post_id, '_taskip_usecase_description', sanitize_textarea_field($_POST['taskip_usecase_description']));
             }
         }
 
