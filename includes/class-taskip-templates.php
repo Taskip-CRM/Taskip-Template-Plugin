@@ -37,6 +37,11 @@ class Taskip_Templates {
         $metaboxes = new Taskip_Metaboxes();
         $metaboxes->initialize();
 
+        // Initialize Shortcodes
+        $shortcodes = new Taskip_Shortcodes();
+        $shortcodes->initialize();
+
+
         // Register widget
 
         // Enqueue frontend scripts and styles
@@ -55,6 +60,35 @@ class Taskip_Templates {
      * Enqueue frontend scripts and styles
      */
     public function enqueue_scripts() {
+
+        if (is_singular('taskip_template')) {
+            // Enqueue jQuery (if not already loaded)
+//            wp_enqueue_script('jquery');
+
+            // Enqueue custom CSS
+            wp_enqueue_style(
+                'taskip-template-download',
+                TASKIP_TEMPLATES_PLUGIN_URL . '/assets/css/taskip-template-download.css',
+                array(),
+                time()//TASKIP_TEMPLATES_VERSION
+            );
+
+            // Enqueue custom JS
+            wp_enqueue_script(
+                'taskip-template-download',
+                TASKIP_TEMPLATES_PLUGIN_URL . '/assets/js/taskip-template-download.js',
+                array('jquery'),
+                TASKIP_TEMPLATES_VERSION,
+                true
+            );
+
+            // Localize script for AJAX
+            wp_localize_script('taskip-template-download', 'taskip_ajax', array(
+                'ajax_url' => admin_url('admin-ajax.php'),
+                'nonce' => wp_create_nonce('taskip_download_nonce')
+            ));
+        }
+
         // Only enqueue on template pages
         if (is_post_type_archive('taskip_template') ||
             is_singular('taskip_template') ||

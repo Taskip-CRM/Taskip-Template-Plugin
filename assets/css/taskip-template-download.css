@@ -1,0 +1,237 @@
+.taskip-download-container {
+    text-align: center;
+}
+
+.taskip-download-btn-two {
+    color: #353535;
+    opacity: .8;
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.taskip-download-btn-two:hover {
+    opacity: 1;
+}
+
+
+.taskip-modal {
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+}
+
+.taskip-modal-content {
+    background: white;
+    margin: 5% auto;
+    padding: 40px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: taskip-modal-appear 0.3s ease-out;
+}
+
+@keyframes taskip-modal-appear {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.taskip-close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #999;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.taskip-close:hover {
+    color: #fff;
+    background-color: #ff4757;
+    transform: rotate(90deg);
+}
+
+.taskip-modal-content h3 {
+    margin: 0 0 30px 0;
+    color: #333;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.taskip-form-group {
+    margin-bottom: 25px;
+}
+
+.taskip-form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+}
+
+.taskip-form-group input[type="text"],
+.taskip-form-group input[type="email"] {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    background-color: #f8f9fa;
+}
+
+.taskip-form-group input[type="text"]:focus,
+.taskip-form-group input[type="email"]:focus {
+    outline: none;
+    border-color: #667eea;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.taskip-consent {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+    position: relative;
+}
+
+.taskip-consent::before {
+    content: '🔒';
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 18px;
+    opacity: 0.6;
+}
+
+.taskip-checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    font-weight: normal !important;
+    cursor: pointer;
+    line-height: 1.5;
+    font-size: 14px;
+    color: #555;
+}
+
+.taskip-checkbox-label input[type="checkbox"] {
+    margin-right: 12px;
+    margin-top: 2px;
+    width: 18px;
+    height: 18px;
+    accent-color: #667eea;
+}
+
+.taskip-submit-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    width: 100%;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.taskip-submit-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.taskip-submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.taskip-btn-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.taskip-spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: taskip-spin 1s linear infinite;
+}
+
+@keyframes taskip-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .taskip-modal-content {
+        margin: 10% auto;
+        padding: 30px 20px;
+        width: 95%;
+    }
+
+    .taskip-download-btn-two {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+
+    .taskip-modal-content h3 {
+        font-size: 20px;
+    }
+
+    .taskip-form-group input[type="text"],
+    .taskip-form-group input[type="email"] {
+        padding: 12px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+}
+
+@media (max-width: 480px) {
+    .taskip-modal-content {
+        padding: 20px 15px;
+    }
+
+    .taskip-consent {
+        padding: 15px;
+    }
+
+    .taskip-checkbox-label {
+        font-size: 13px;
+    }
+}
