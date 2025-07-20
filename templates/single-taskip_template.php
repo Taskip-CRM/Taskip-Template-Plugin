@@ -147,6 +147,7 @@ get_header(); ?>
         $preview_url = get_post_meta(get_the_ID(), "_taskip_preview_url", true); ?>
 
         <a href="<?php echo esc_url($preview_url)?>" class="taskip-signup-btn" target="_blank"><?php _e("Use This Template", "taskip-templates"); ?></a>
+        <?php echo do_shortcode('[taskip_template_download]'); ?>
     </div>
 
 
