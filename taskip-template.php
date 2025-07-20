@@ -26,6 +26,7 @@ require_once TASKIP_TEMPLATES_PLUGIN_DIR . 'includes/class-taskip-post-types.php
 require_once TASKIP_TEMPLATES_PLUGIN_DIR . 'includes/class-taskip-taxonomies.php';
 require_once TASKIP_TEMPLATES_PLUGIN_DIR . 'includes/class-taskip-metaboxes.php';
 require_once TASKIP_TEMPLATES_PLUGIN_DIR . 'includes/class-taskip-shortcodes.php';
+require_once TASKIP_TEMPLATES_PLUGIN_DIR . 'includes/class-taskip-ajax.php';
 require_once TASKIP_TEMPLATES_PLUGIN_DIR . 'admin/class-taskip-admin.php';
 
 // Initialize the plugin

@@ -41,6 +41,10 @@ class Taskip_Templates {
         $shortcodes = new Taskip_Shortcodes();
         $shortcodes->initialize();
 
+        // Initialize Ajax Request
+        $ajax_request = new Taskip_Ajax();
+        $ajax_request->initialize();
+
 
         // Register widget
 
