@@ -56,11 +56,19 @@ class Taskip_Ajax {
         }
 
         // Get file URL from template meta
-        $file_url = get_post_meta($template_id, '_taskip_template_file_url', true);
+        $file_url = get_post_meta($template_id, '_taskip_preview_url', true);
 
         if (empty($file_url)) {
             wp_send_json_error(array('message' => 'Download file not found.'));
         }
+
+
+        //todo:: work on download url
+
+        /* Need to reimplement fluent crm background process  */
+        $taskip_flutent_crm = new Taskip_FluentCRM_Api();
+        $taskip_flutent_crm->taskip_add_to_fluentcrm_background($name, $email, $template_id);
+
 
         // Send immediate response with download URL
         wp_send_json_success(array(
@@ -68,11 +76,6 @@ class Taskip_Ajax {
             'message' => 'Download started successfully!'
         ));
 
-        // Process FluentCRM in background (this won't affect the user response)
-        fastcgi_finish_request(); // Send response to user immediately
-
-        /* Need to reimplement fluent crm background process  */
-       // taskip_add_to_fluentcrm_background($name, $email, $template_id);
     }
 
     // Email spam filter

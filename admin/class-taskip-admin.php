@@ -12,19 +12,22 @@ if (!defined('ABSPATH')) {
 /**
  * Admin class
  */
-class Taskip_Admin {
+class Taskip_Admin
+{
 
     /**
      * Constructor
      */
-    public function __construct() {
+    public function __construct()
+    {
         // Initialize properties
     }
 
     /**
      * Initialize admin functionality
      */
-    public function initialize() {
+    public function initialize()
+    {
         // Add admin menu
         add_action('admin_menu', array($this, 'add_admin_menu'));
 
@@ -45,12 +48,14 @@ class Taskip_Admin {
 
         // Add admin notices
         add_action('admin_notices', array($this, 'admin_notices'));
+        add_action('admin_init', array($this, 'register_settings'));
     }
 
     /**
      * Add admin menu
      */
-    public function add_admin_menu() {
+    public function add_admin_menu()
+    {
         add_submenu_page(
             'edit.php?post_type=taskip_template',
             __('Settings', 'taskip-templates'),
@@ -64,7 +69,8 @@ class Taskip_Admin {
     /**
      * Settings page content
      */
-    public function settings_page() {
+    public function settings_page()
+    {
         ?>
         <div class="wrap">
             <h1><?php echo esc_html__('Taskip Templates Settings', 'taskip-templates'); ?></h1>
@@ -86,12 +92,20 @@ class Taskip_Admin {
                     <p><?php _e('Displays a grid of templates with optional filtering.', 'taskip-templates'); ?></p>
                     <p><strong><?php _e('Parameters:', 'taskip-templates'); ?></strong></p>
                     <ul>
-                        <li><code>type</code> - <?php _e('Filter by template type slug (comma-separated for multiple types)', 'taskip-templates'); ?></li>
-                        <li><code>industry</code> - <?php _e('Filter by industry slug (comma-separated for multiple industries)', 'taskip-templates'); ?></li>
-                        <li><code>limit</code> - <?php _e('Number of templates to display (default: 12)', 'taskip-templates'); ?></li>
-                        <li><code>columns</code> - <?php _e('Number of columns in the grid (default: 3)', 'taskip-templates'); ?></li>
-                        <li><code>orderby</code> - <?php _e('Order by parameter (default: date)', 'taskip-templates'); ?></li>
-                        <li><code>order</code> - <?php _e('Order direction (default: DESC)', 'taskip-templates'); ?></li>
+                        <li><code>type</code>
+                            - <?php _e('Filter by template type slug (comma-separated for multiple types)', 'taskip-templates'); ?>
+                        </li>
+                        <li><code>industry</code>
+                            - <?php _e('Filter by industry slug (comma-separated for multiple industries)', 'taskip-templates'); ?>
+                        </li>
+                        <li><code>limit</code>
+                            - <?php _e('Number of templates to display (default: 12)', 'taskip-templates'); ?></li>
+                        <li><code>columns</code>
+                            - <?php _e('Number of columns in the grid (default: 3)', 'taskip-templates'); ?></li>
+                        <li><code>orderby</code>
+                            - <?php _e('Order by parameter (default: date)', 'taskip-templates'); ?></li>
+                        <li><code>order</code> - <?php _e('Order direction (default: DESC)', 'taskip-templates'); ?>
+                        </li>
                     </ul>
                     <p><strong><?php _e('Example:', 'taskip-templates'); ?></strong></p>
                     <code>[taskip_templates type="invoices,contracts" limit="6" columns="2"]</code>
@@ -102,10 +116,13 @@ class Taskip_Admin {
                     <p><?php _e('Displays a list of template categories (types).', 'taskip-templates'); ?></p>
                     <p><strong><?php _e('Parameters:', 'taskip-templates'); ?></strong></p>
                     <ul>
-                        <li><code>orderby</code> - <?php _e('Order by parameter (default: name)', 'taskip-templates'); ?></li>
+                        <li><code>orderby</code>
+                            - <?php _e('Order by parameter (default: name)', 'taskip-templates'); ?></li>
                         <li><code>order</code> - <?php _e('Order direction (default: ASC)', 'taskip-templates'); ?></li>
-                        <li><code>hide_empty</code> - <?php _e('Hide empty categories (default: 1)', 'taskip-templates'); ?></li>
-                        <li><code>show_count</code> - <?php _e('Show template count (default: 1)', 'taskip-templates'); ?></li>
+                        <li><code>hide_empty</code>
+                            - <?php _e('Hide empty categories (default: 1)', 'taskip-templates'); ?></li>
+                        <li><code>show_count</code>
+                            - <?php _e('Show template count (default: 1)', 'taskip-templates'); ?></li>
                     </ul>
                 </div>
 
@@ -114,10 +131,13 @@ class Taskip_Admin {
                     <p><?php _e('Displays a list of template industries.', 'taskip-templates'); ?></p>
                     <p><strong><?php _e('Parameters:', 'taskip-templates'); ?></strong></p>
                     <ul>
-                        <li><code>orderby</code> - <?php _e('Order by parameter (default: name)', 'taskip-templates'); ?></li>
+                        <li><code>orderby</code>
+                            - <?php _e('Order by parameter (default: name)', 'taskip-templates'); ?></li>
                         <li><code>order</code> - <?php _e('Order direction (default: ASC)', 'taskip-templates'); ?></li>
-                        <li><code>hide_empty</code> - <?php _e('Hide empty industries (default: 1)', 'taskip-templates'); ?></li>
-                        <li><code>show_count</code> - <?php _e('Show template count (default: 1)', 'taskip-templates'); ?></li>
+                        <li><code>hide_empty</code>
+                            - <?php _e('Hide empty industries (default: 1)', 'taskip-templates'); ?></li>
+                        <li><code>show_count</code>
+                            - <?php _e('Show template count (default: 1)', 'taskip-templates'); ?></li>
                     </ul>
                 </div>
             </div>
@@ -130,7 +150,8 @@ class Taskip_Admin {
      *
      * @param string $hook Current admin page hook suffix.
      */
-    public function admin_enqueue_scripts($hook) {
+    public function admin_enqueue_scripts($hook)
+    {
         // Only enqueue on template admin pages
         $screen = get_current_screen();
 
@@ -163,14 +184,17 @@ class Taskip_Admin {
      *
      * @param string $taxonomy Taxonomy slug.
      */
-    public function add_taxonomy_image_field($taxonomy) {
+    public function add_taxonomy_image_field($taxonomy)
+    {
         ?>
         <div class="form-field term-image-wrap">
             <label for="taxonomy-image"><?php _e('Category Image', 'taskip-templates'); ?></label>
             <div id="taxonomy-image-preview" class="taxonomy-image-preview"></div>
             <input type="hidden" id="taxonomy-image" name="taxonomy_image" class="taxonomy-image-field" value="">
-            <button type="button" class="button button-secondary taxonomy-image-upload"><?php _e('Upload Image', 'taskip-templates'); ?></button>
-            <button type="button" class="button button-secondary taxonomy-image-remove" style="display:none;"><?php _e('Remove Image', 'taskip-templates'); ?></button>
+            <button type="button"
+                    class="button button-secondary taxonomy-image-upload"><?php _e('Upload Image', 'taskip-templates'); ?></button>
+            <button type="button" class="button button-secondary taxonomy-image-remove"
+                    style="display:none;"><?php _e('Remove Image', 'taskip-templates'); ?></button>
             <p class="description"><?php _e('Upload an image for this category/industry.', 'taskip-templates'); ?></p>
         </div>
         <?php
@@ -179,10 +203,11 @@ class Taskip_Admin {
     /**
      * Add image field to taxonomy edit form
      *
-     * @param WP_Term $term     Term object.
-     * @param string  $taxonomy Taxonomy slug.
+     * @param WP_Term $term Term object.
+     * @param string $taxonomy Taxonomy slug.
      */
-    public function edit_taxonomy_image_field($term, $taxonomy) {
+    public function edit_taxonomy_image_field($term, $taxonomy)
+    {
         $image_id = get_term_meta($term->term_id, 'taxonomy_image_id', true);
         $image_url = '';
 
@@ -195,12 +220,16 @@ class Taskip_Admin {
             <td>
                 <div id="taxonomy-image-preview" class="taxonomy-image-preview">
                     <?php if ($image_url) : ?>
-                        <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($term->name); ?>" style="max-width: 300px;">
+                        <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($term->name); ?>"
+                             style="max-width: 300px;">
                     <?php endif; ?>
                 </div>
-                <input type="hidden" id="taxonomy-image" name="taxonomy_image" class="taxonomy-image-field" value="<?php echo esc_attr($image_id); ?>">
-                <button type="button" class="button button-secondary taxonomy-image-upload"><?php _e('Upload Image', 'taskip-templates'); ?></button>
-                <button type="button" class="button button-secondary taxonomy-image-remove" <?php echo $image_url ? '' : 'style="display:none;"'; ?>><?php _e('Remove Image', 'taskip-templates'); ?></button>
+                <input type="hidden" id="taxonomy-image" name="taxonomy_image" class="taxonomy-image-field"
+                       value="<?php echo esc_attr($image_id); ?>">
+                <button type="button"
+                        class="button button-secondary taxonomy-image-upload"><?php _e('Upload Image', 'taskip-templates'); ?></button>
+                <button type="button"
+                        class="button button-secondary taxonomy-image-remove" <?php echo $image_url ? '' : 'style="display:none;"'; ?>><?php _e('Remove Image', 'taskip-templates'); ?></button>
                 <p class="description"><?php _e('Upload an image for this category/industry.', 'taskip-templates'); ?></p>
             </td>
         </tr>
@@ -210,10 +239,11 @@ class Taskip_Admin {
     /**
      * Save taxonomy image field
      *
-     * @param int    $term_id  Term ID.
+     * @param int $term_id Term ID.
      * @param string $taxonomy Taxonomy slug.
      */
-    public function save_taxonomy_image($term_id, $taxonomy_id) {
+    public function save_taxonomy_image($term_id, $taxonomy_id)
+    {
         if (isset($_POST['taxonomy_image']) && !empty($_POST['taxonomy_image'])) {
             update_term_meta($term_id, 'taxonomy_image_id', absint($_POST['taxonomy_image']));
         } else {
@@ -224,7 +254,8 @@ class Taskip_Admin {
     /**
      * Display admin notices
      */
-    public function admin_notices() {
+    public function admin_notices()
+    {
         // Check if permalinks are not set to "Post name"
         $permalink_structure = get_option('permalink_structure');
 
@@ -235,5 +266,63 @@ class Taskip_Admin {
             </div>
             <?php
         }
+    }
+
+    /**
+     * Register plugin settings
+     */
+    public function register_settings()
+    {
+        register_setting('taskip_templates_settings', 'taskip_fluentcrm_username');
+        register_setting('taskip_templates_settings', 'taskip_fluentcrm_password');
+
+        add_settings_section(
+            'taskip_fluentcrm_section',
+            __('Fluent CRM API Settings', 'taskip-templates'),
+            array($this, 'fluentcrm_section_callback'),
+            'taskip_templates_settings'
+        );
+
+        add_settings_field(
+            'taskip_fluentcrm_username',
+            __('API Username', 'taskip-templates'),
+            array($this, 'fluentcrm_username_callback'),
+            'taskip_templates_settings',
+            'taskip_fluentcrm_section'
+        );
+
+        add_settings_field(
+            'taskip_fluentcrm_password',
+            __('API Password', 'taskip-templates'),
+            array($this, 'fluentcrm_password_callback'),
+            'taskip_templates_settings',
+            'taskip_fluentcrm_section'
+        );
+    }
+
+    /**
+     * Fluent CRM section description
+     */
+    public function fluentcrm_section_callback()
+    {
+        echo '<p>' . esc_html__('Configure your Fluent CRM API credentials.', 'taskip-templates') . '</p>';
+    }
+
+    /**
+     * Username field callback
+     */
+    public function fluentcrm_username_callback()
+    {
+        $username = get_option('taskip_fluentcrm_username');
+        echo '<input type="text" name="taskip_fluentcrm_username" value="' . esc_attr($username) . '" class="regular-text">';
+    }
+
+    /**
+     * Password field callback
+     */
+    public function fluentcrm_password_callback()
+    {
+        $password = get_option('taskip_fluentcrm_password');
+        echo '<input type="password" name="taskip_fluentcrm_password" value="' . esc_attr($password) . '" class="regular-text">';
     }
 }
