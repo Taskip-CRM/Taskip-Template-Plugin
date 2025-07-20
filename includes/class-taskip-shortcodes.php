@@ -154,7 +154,7 @@ class Taskip_Shortcodes {
 
                                 // Show success message (optional)
                                 if (response.data.message) {
-                                    alert(response.data.message);
+                                   // alert(response.data.message);
                                 }
                             } else {
                                 alert('Error: ' + response.data.message);

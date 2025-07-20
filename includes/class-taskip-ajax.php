@@ -56,7 +56,8 @@ class Taskip_Ajax {
         }
 
         // Get file URL from template meta
-        $file_url = get_post_meta($template_id, '_taskip_preview_url', true);
+
+        $file_url = $this->taskip_get_template_download_url($template_id,'docx');//get_post_meta($template_id, '_taskip_preview_url', true);
 
         if (empty($file_url)) {
             wp_send_json_error(array('message' => 'Download file not found.'));
@@ -628,4 +629,68 @@ class Taskip_Ajax {
             error_log('FluentCRM Error: ' . $e->getMessage());
         }
     }
+
+    // Convert template URL to downloadable URL
+    private function taskip_convert_to_download_url($template_url, $download_type = 'docx') {
+        // Parse the URL to get components
+        $parsed_url = parse_url($template_url);
+
+        if (!$parsed_url) {
+            return $template_url; // Return original if parsing fails
+        }
+
+        // Extract the path
+        $path = $parsed_url['path'] ?? '';
+
+        // Parse existing query parameters
+        $query_params = array();
+        if (isset($parsed_url['query'])) {
+            parse_str($parsed_url['query'], $query_params);
+        }
+
+        // Build the new download URL
+        $download_path = rtrim($path, '/') . '/download';
+
+        // Add download type to query parameters
+        $query_params['dtype'] = $download_type;
+
+        // Rebuild the URL
+        $download_url = $parsed_url['scheme'] . '://' . $parsed_url['host'];
+
+        // Add port if specified
+        if (isset($parsed_url['port'])) {
+            $download_url .= ':' . $parsed_url['port'];
+        }
+
+        // Add the new path
+        $download_url .= $download_path;
+
+        // Add query parameters
+        if (!empty($query_params)) {
+            $download_url .= '?' . http_build_query($query_params);
+        }
+
+        return $download_url;
+    }
+
+// Get download URL from template meta with automatic conversion
+    public function taskip_get_template_download_url($template_id, $download_type = 'docx') {
+
+        // If no direct download URL, get the template URL and convert it
+        $template_url = get_post_meta($template_id, '_taskip_preview_url', true);
+
+        if (empty($template_url)) {
+            // If no template URL in meta, try to construct from template permalink
+            $template_url = get_permalink($template_id);
+
+            // Add default query parameters if it's a template page
+            if (get_post_type($template_id) === 'taskip_template') {
+                $template_url = add_query_arg('type', 'document', $template_url);
+            }
+        }
+
+        // Convert to download URL
+        return $this->taskip_convert_to_download_url($template_url, $download_type);
+    }
+
 }

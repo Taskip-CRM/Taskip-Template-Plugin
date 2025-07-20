@@ -119,7 +119,7 @@
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     padding: 20px;
     border-radius: 8px;
-    border-left: 4px solid #667eea;
+    border-left: 4px solid #00B289;
     position: relative;
 }
 
@@ -147,11 +147,11 @@
     margin-top: 2px;
     width: 18px;
     height: 18px;
-    accent-color: #667eea;
+    accent-color: #00B289;
 }
 
 .taskip-submit-btn {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #00B289 0%, #00B299 100%);
     color: white;
     padding: 15px 30px;
     border: none;
