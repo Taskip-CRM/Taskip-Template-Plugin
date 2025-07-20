@@ -38,7 +38,7 @@ class Taskip_Templates {
         $metaboxes->initialize();
 
         // Initialize Shortcodes
-        $shortcodes = new Taskip_Shortcodes();
+        $shortcodes = new Taskip_Template_Shortcodes();
         $shortcodes->initialize();
 
         // Initialize Ajax Request

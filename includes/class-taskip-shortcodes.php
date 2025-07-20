@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
 /**
  * Shortcode class
  */
-class Taskip_Shortcodes {
+class Taskip_Template_Shortcodes {
 
     /**
      * Constructor
