@@ -71,9 +71,12 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }, 500);
 
-    searchInput.addEventListener('input', function(e) {
-        const searchTerm = e.target.value.trim();
-        performSearch(searchTerm);
-    });
+    if (searchInput){
+        searchInput.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.trim();
+            performSearch(searchTerm);
+        });
+    }
+
 
 });
