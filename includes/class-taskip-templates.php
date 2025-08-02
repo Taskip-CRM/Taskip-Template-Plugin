@@ -190,6 +190,8 @@ class Taskip_Templates {
 
         if (is_singular('taskip_template')) {
             $file = 'single-taskip_template.php';
+        } elseif (is_singular('tools')) {
+            $file = 'single-tools.php';
         } elseif (is_post_type_archive('taskip_template')) {
             $file = 'archive-taskip_template.php';
         } elseif (is_tax('template_type') || is_tax('template_industry')) {
