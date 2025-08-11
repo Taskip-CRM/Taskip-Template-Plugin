@@ -59,7 +59,7 @@ class Taskip_Template_Shortcodes {
         <!-- Popup Modal -->
         <div id="taskip-modal-template_____download_now_button" class="taskip-modal" style="display: none;">
             <div class="taskip-modal-content">
-                <span class="taskip-close" data-target="<?php echo $unique_id; ?>">&times;</span>
+                <span class="taskip-close" id="taskip__download__modal_close_btn">&times;</span>
                 <h3>Download <?php echo esc_html($template_title); ?></h3>
                 <form id="taskip-form-template_____download_now_button" class="taskip-download-form">
                     <div class="taskip-form-group">

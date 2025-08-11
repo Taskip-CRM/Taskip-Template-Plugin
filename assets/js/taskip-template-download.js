@@ -10,7 +10,7 @@ jQuery(document).ready(function ($) {
         });
 
         // Close modal handler
-        $('.taskip-close[data-target="' + uniqueId + '"]').on('click', function () {
+        $('#taskip__download__modal_close_btn').on('click', function () {
             $('#taskip-modal-' + uniqueId).fadeOut(300);
         });
 
