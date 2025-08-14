@@ -5,7 +5,10 @@
  * @package Taskip Templates Showcase
  */
 
-get_header(); ?>
+get_header();
+
+$preview_url = get_post_meta(get_the_ID(), "_taskip_preview_url", true);
+?>
 
     <div class="taskip-template-single taskip-single-blog-part">
     <div class="taskip-template-container container single-blog-body-wraper">
@@ -46,11 +49,13 @@ get_header(); ?>
     <div class="taskip-template-content-wrap">
     <div class="taskip-template-main">
         <div class="taskip-template-image">
+            <a href="<?php echo esc_url($preview_url)?>" target="_blank">
             <?php if (has_post_thumbnail()) : ?>
                 <?php the_post_thumbnail("large", array("class" => "taskip-main-image")); ?>
             <?php else : ?>
                     <div class="taskip-template-placeholder"></div>
             <?php endif; ?>
+            </a>
         </div>
 
         <div class="taskip-template-content single-blog-body">
@@ -144,7 +149,7 @@ get_header(); ?>
             </ul>
         <?php
             endif;
-        $preview_url = get_post_meta(get_the_ID(), "_taskip_preview_url", true); ?>
+        ?>
 
         <a href="<?php echo esc_url($preview_url)?>" class="taskip-signup-btn" target="_blank"><?php _e("Use This Template", "taskip-templates"); ?></a>
         <?php echo do_shortcode('[taskip_template_download]'); ?>
