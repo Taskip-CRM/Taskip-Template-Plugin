@@ -67,7 +67,9 @@ class Taskip_Templates {
 
         // Only enqueue on template pages
         if (is_post_type_archive('taskip_template') ||
+            is_post_type_archive('tools') ||
             is_singular('taskip_template') ||
+            is_singular('tools') ||
             is_tax('template_type') ||
             is_tax('template_industry') ||
             is_page_template('templates/page-templates.php')) {
@@ -194,6 +196,8 @@ class Taskip_Templates {
             $file = 'single-tools.php';
         } elseif (is_post_type_archive('taskip_template')) {
             $file = 'archive-taskip_template.php';
+        } elseif (is_post_type_archive('tools')) {
+            $file = 'archive-tools.php';
         } elseif (is_tax('template_type') || is_tax('template_industry')) {
             $file = 'taxonomy-template.php';
         }

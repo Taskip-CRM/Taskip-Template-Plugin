@@ -28,6 +28,7 @@ class Taskip_Metaboxes {
         // Add meta boxes for template metadata
         add_action('add_meta_boxes', array($this, 'add_template_meta_boxes'));
         add_action('add_meta_boxes', array($this, 'add_usecases_meta_boxes'));
+        add_action('add_meta_boxes', array($this, 'add_tools_meta_boxes'));
 
         // Save template metadata
         add_action('save_post', array($this, 'save_template_meta'));
@@ -59,6 +60,20 @@ class Taskip_Metaboxes {
         );
     }
 
+    /**
+     * Add meta boxes for tools metadata
+     */
+    public function add_tools_meta_boxes() {
+        add_meta_box(
+            'taskip_tools_meta',
+            __('Tool Details', 'taskip-templates'),
+            array($this, 'render_tools_meta_box'),
+            'tools',
+            'normal',
+            'high'
+        );
+    }
+
 
     /**
      * Render usecases meta box
@@ -83,6 +98,74 @@ class Taskip_Metaboxes {
                 <label for="taskip_usecase_description"><?php _e('Description:', 'taskip-templates'); ?></label>
                 <textarea id="taskip_usecase_description" name="taskip_usecase_description" class="widefat" rows="5"><?php echo esc_textarea($description); ?></textarea>
                 <span class="description"><?php _e('Detailed description of the use case', 'taskip-templates'); ?></span>
+            </div>
+        </div>
+        <?php
+    }
+
+    /**
+     * Render tools meta box
+     *
+     * @param WP_Post $post The post object.
+     */
+    public function render_tools_meta_box($post) {
+        // Add nonce for security
+        wp_nonce_field('taskip_tools_meta', 'taskip_tools_meta_nonce');
+
+        // Get saved metadata
+        $card_title = get_post_meta($post->ID, '_taskip_tool_card_title', true);
+        $tagline = get_post_meta($post->ID, '_taskip_tool_tagline', true);
+        $description = get_post_meta($post->ID, '_taskip_tool_description', true);
+        $features = get_post_meta($post->ID, '_taskip_tool_features', true);
+        $cta_url = get_post_meta($post->ID, '_taskip_tool_cta_url', true);
+        $gradient_start = get_post_meta($post->ID, '_taskip_tool_gradient_start', true);
+        $gradient_end = get_post_meta($post->ID, '_taskip_tool_gradient_end', true);
+        
+        // Set defaults
+        $gradient_start = !empty($gradient_start) ? $gradient_start : '#667eea';
+        $gradient_end = !empty($gradient_end) ? $gradient_end : '#764ba2';
+        ?>
+        <div class="taskip-meta-section">
+            <div class="taskip-meta-field">
+                <label for="taskip_tool_card_title"><?php _e('Card Title (Optional):', 'taskip-templates'); ?></label>
+                <input type="text" id="taskip_tool_card_title" name="_taskip_tool_card_title" value="<?php echo esc_attr($card_title); ?>" class="widefat" />
+                <span class="description"><?php _e('Custom title for archive page card. Leave empty to use default post title.', 'taskip-templates'); ?></span>
+            </div>
+            
+            <div class="taskip-meta-field">
+                <label for="taskip_tool_tagline"><?php _e('Tool Tagline:', 'taskip-templates'); ?></label>
+                <input type="text" id="taskip_tool_tagline" name="_taskip_tool_tagline" value="<?php echo esc_attr($tagline); ?>" class="widefat" />
+                <span class="description"><?php _e('Short tagline for the tool (displayed in header)', 'taskip-templates'); ?></span>
+            </div>
+            
+            <div class="taskip-meta-field">
+                <label for="taskip_tool_description"><?php _e('Tool Description:', 'taskip-templates'); ?></label>
+                <textarea id="taskip_tool_description" name="_taskip_tool_description" class="widefat" rows="3"><?php echo esc_textarea($description); ?></textarea>
+                <span class="description"><?php _e('Brief description of the tool (displayed in body)', 'taskip-templates'); ?></span>
+            </div>
+            
+            <div class="taskip-meta-field">
+                <label for="taskip_tool_features"><?php _e('Tool Features:', 'taskip-templates'); ?></label>
+                <textarea id="taskip_tool_features" name="_taskip_tool_features" class="widefat" rows="5"><?php echo esc_textarea($features); ?></textarea>
+                <span class="description"><?php _e('List of tool features (one per line)', 'taskip-templates'); ?></span>
+            </div>
+            
+            <div class="taskip-meta-field">
+                <label for="taskip_tool_cta_url"><?php _e('CTA URL:', 'taskip-templates'); ?></label>
+                <input type="url" id="taskip_tool_cta_url" name="_taskip_tool_cta_url" value="<?php echo esc_url($cta_url); ?>" class="widefat" />
+                <span class="description"><?php _e('URL for the "Try [Tool Name]" button', 'taskip-templates'); ?></span>
+            </div>
+            
+            <div class="taskip-meta-field">
+                <label for="taskip_tool_gradient_start"><?php _e('Header Gradient Start Color:', 'taskip-templates'); ?></label>
+                <input type="color" id="taskip_tool_gradient_start" name="_taskip_tool_gradient_start" value="<?php echo esc_attr($gradient_start); ?>" />
+                <span class="description"><?php _e('Starting color for the header gradient', 'taskip-templates'); ?></span>
+            </div>
+            
+            <div class="taskip-meta-field">
+                <label for="taskip_tool_gradient_end"><?php _e('Header Gradient End Color:', 'taskip-templates'); ?></label>
+                <input type="color" id="taskip_tool_gradient_end" name="_taskip_tool_gradient_end" value="<?php echo esc_attr($gradient_end); ?>" />
+                <span class="description"><?php _e('Ending color for the header gradient', 'taskip-templates'); ?></span>
             </div>
         </div>
         <?php
@@ -128,13 +211,17 @@ Used by 250+ professionals";
      */
     public function save_template_meta($post_id) {
 
-        // Add nonce check for usecases
+        // Add nonce check for usecases, templates, and tools
         if (isset($_POST['taskip_usecases_meta_nonce'])) {
             if (!wp_verify_nonce($_POST['taskip_usecases_meta_nonce'], 'taskip_usecases_meta')) {
                 return;
             }
         } elseif (isset($_POST['taskip_template_meta_nonce'])) {
             if (!wp_verify_nonce($_POST['taskip_template_meta_nonce'], 'taskip_template_meta')) {
+                return;
+            }
+        } elseif (isset($_POST['taskip_tools_meta_nonce'])) {
+            if (!wp_verify_nonce($_POST['taskip_tools_meta_nonce'], 'taskip_tools_meta')) {
                 return;
             }
         } else {
@@ -174,6 +261,33 @@ Used by 250+ professionals";
             }
             if (isset($_POST['taskip_usecase_description'])) {
                 update_post_meta($post_id, '_taskip_usecase_description', sanitize_textarea_field($_POST['taskip_usecase_description']));
+            }
+        } elseif ($_POST['post_type'] === 'tools') {
+            if (!current_user_can('edit_post', $post_id)) {
+                return;
+            }
+
+            // Save tools metadata
+            if (isset($_POST['_taskip_tool_card_title'])) {
+                update_post_meta($post_id, '_taskip_tool_card_title', sanitize_text_field($_POST['_taskip_tool_card_title']));
+            }
+            if (isset($_POST['_taskip_tool_tagline'])) {
+                update_post_meta($post_id, '_taskip_tool_tagline', sanitize_text_field($_POST['_taskip_tool_tagline']));
+            }
+            if (isset($_POST['_taskip_tool_description'])) {
+                update_post_meta($post_id, '_taskip_tool_description', sanitize_textarea_field($_POST['_taskip_tool_description']));
+            }
+            if (isset($_POST['_taskip_tool_features'])) {
+                update_post_meta($post_id, '_taskip_tool_features', sanitize_textarea_field($_POST['_taskip_tool_features']));
+            }
+            if (isset($_POST['_taskip_tool_cta_url'])) {
+                update_post_meta($post_id, '_taskip_tool_cta_url', esc_url_raw($_POST['_taskip_tool_cta_url']));
+            }
+            if (isset($_POST['_taskip_tool_gradient_start'])) {
+                update_post_meta($post_id, '_taskip_tool_gradient_start', sanitize_hex_color($_POST['_taskip_tool_gradient_start']));
+            }
+            if (isset($_POST['_taskip_tool_gradient_end'])) {
+                update_post_meta($post_id, '_taskip_tool_gradient_end', sanitize_hex_color($_POST['_taskip_tool_gradient_end']));
             }
         }
 
