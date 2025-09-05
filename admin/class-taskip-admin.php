@@ -275,11 +275,20 @@ class Taskip_Admin
     {
         register_setting('taskip_templates_settings', 'taskip_fluentcrm_username');
         register_setting('taskip_templates_settings', 'taskip_fluentcrm_password');
+        register_setting('taskip_templates_settings', 'taskip_tools_archive_title');
+        register_setting('taskip_templates_settings', 'taskip_tools_archive_paragraph');
 
         add_settings_section(
             'taskip_fluentcrm_section',
             __('Fluent CRM API Settings', 'taskip-templates'),
             array($this, 'fluentcrm_section_callback'),
+            'taskip_templates_settings'
+        );
+
+        add_settings_section(
+            'taskip_tools_archive_section',
+            __('Tools Archive Settings', 'taskip-templates'),
+            array($this, 'tools_archive_section_callback'),
             'taskip_templates_settings'
         );
 
@@ -297,6 +306,22 @@ class Taskip_Admin
             array($this, 'fluentcrm_password_callback'),
             'taskip_templates_settings',
             'taskip_fluentcrm_section'
+        );
+
+        add_settings_field(
+            'taskip_tools_archive_title',
+            __('Tools Archive Title', 'taskip-templates'),
+            array($this, 'tools_archive_title_callback'),
+            'taskip_templates_settings',
+            'taskip_tools_archive_section'
+        );
+
+        add_settings_field(
+            'taskip_tools_archive_paragraph',
+            __('Tools Archive Description', 'taskip-templates'),
+            array($this, 'tools_archive_paragraph_callback'),
+            'taskip_templates_settings',
+            'taskip_tools_archive_section'
         );
     }
 
@@ -324,5 +349,33 @@ class Taskip_Admin
     {
         $password = get_option('taskip_fluentcrm_password');
         echo '<input type="password" name="taskip_fluentcrm_password" value="' . esc_attr($password) . '" class="regular-text">';
+    }
+
+    /**
+     * Tools archive section description
+     */
+    public function tools_archive_section_callback()
+    {
+        echo '<p>' . esc_html__('Configure the title and description for your tools archive page.', 'taskip-templates') . '</p>';
+    }
+
+    /**
+     * Tools archive title field callback
+     */
+    public function tools_archive_title_callback()
+    {
+        $title = get_option('taskip_tools_archive_title', 'Free Tools Collection');
+        echo '<input type="text" name="taskip_tools_archive_title" value="' . esc_attr($title) . '" class="regular-text">';
+        echo '<p class="description">' . esc_html__('Enter the main title for your tools archive page.', 'taskip-templates') . '</p>';
+    }
+
+    /**
+     * Tools archive paragraph field callback
+     */
+    public function tools_archive_paragraph_callback()
+    {
+        $paragraph = get_option('taskip_tools_archive_paragraph', 'Discover our collection of free online tools designed to help you work smarter and faster. From generators to converters, find the perfect tool for your needs.');
+        echo '<textarea name="taskip_tools_archive_paragraph" rows="4" class="large-text">' . esc_textarea($paragraph) . '</textarea>';
+        echo '<p class="description">' . esc_html__('Enter the description paragraph that appears below the title.', 'taskip-templates') . '</p>';
     }
 }
