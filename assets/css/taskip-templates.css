@@ -1383,8 +1383,12 @@
 
 .ib-tool-cta a:hover {
     background: #667eea;
-    color: #ffffff;
+    color: #ffffff !important;
     transform: translateY(-1px);
+}
+
+.ib-tool-cta a:hover span {
+    color: #ffffff !important;
 }
 
 .ib-tool-cta a span {
