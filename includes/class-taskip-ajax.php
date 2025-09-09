@@ -191,7 +191,26 @@ class Taskip_Ajax {
             'email.org',
             'mail.org',
             'webmail.org',
-            'freemail.org'
+            'freemail.org',
+            'nesopf.com',
+            'enotj.com',
+            'dextrago.com',
+            'powerscrews.com',
+            'bwmyga.com',
+            'rapidletter.net',
+            'cyclelove.cc',
+            'mailshan.com',
+            'necub.com',
+            'photobrex.com',
+            'radiant-flow.org',
+            'mailsac.com',
+            'dripzgaming.com',
+            'binich.com',
+            'haben-wir.com',
+            'assurmail.net',
+            'jetable.org',
+            'sindwir.com',
+            'vertexinbox.com'
         );
 
         // Get domain from email
