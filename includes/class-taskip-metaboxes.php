@@ -29,6 +29,7 @@ class Taskip_Metaboxes {
         add_action('add_meta_boxes', array($this, 'add_template_meta_boxes'));
         add_action('add_meta_boxes', array($this, 'add_usecases_meta_boxes'));
         add_action('add_meta_boxes', array($this, 'add_tools_meta_boxes'));
+        add_action('add_meta_boxes', array($this, 'add_legal_meta_boxes'));
 
         // Save template metadata
         add_action('save_post', array($this, 'save_template_meta'));
@@ -69,6 +70,20 @@ class Taskip_Metaboxes {
             __('Tool Details', 'taskip-templates'),
             array($this, 'render_tools_meta_box'),
             'tools',
+            'normal',
+            'high'
+        );
+    }
+
+    /**
+     * Add meta boxes for legal page metadata
+     */
+    public function add_legal_meta_boxes() {
+        add_meta_box(
+            'taskip_legal_meta',
+            __('Legal Page Details', 'taskip-templates'),
+            array($this, 'render_legal_meta_box'),
+            'legal',
             'normal',
             'high'
         );
@@ -171,6 +186,45 @@ class Taskip_Metaboxes {
         <?php
     }
 
+    /**
+     * Render legal page meta box
+     *
+     * @param WP_Post $post The post object.
+     */
+    public function render_legal_meta_box($post) {
+        // Add nonce for security
+        wp_nonce_field('taskip_legal_meta', 'taskip_legal_meta_nonce');
+
+        // Get saved metadata
+        $hero_description = get_post_meta($post->ID, '_taskip_legal_hero_description', true);
+        $hero_icon = get_post_meta($post->ID, '_taskip_legal_hero_icon', true);
+        $icon_background_color = get_post_meta($post->ID, '_taskip_legal_icon_bg_color', true);
+        
+        // Set defaults
+        $icon_background_color = !empty($icon_background_color) ? $icon_background_color : '#4ECDC4';
+        ?>
+        <div class="taskip-meta-section">
+            <div class="taskip-meta-field">
+                <label for="taskip_legal_hero_description"><?php _e('Hero Description:', 'taskip-templates'); ?></label>
+                <textarea id="taskip_legal_hero_description" name="_taskip_legal_hero_description" class="widefat" rows="3"><?php echo esc_textarea($hero_description); ?></textarea>
+                <span class="description"><?php _e('Short description that appears below the title in the hero section', 'taskip-templates'); ?></span>
+            </div>
+            
+            <div class="taskip-meta-field">
+                <label for="taskip_legal_hero_icon"><?php _e('Hero Icon (SVG Code):', 'taskip-templates'); ?></label>
+                <textarea id="taskip_legal_hero_icon" name="_taskip_legal_hero_icon" class="widefat" rows="8"><?php echo esc_textarea($hero_icon); ?></textarea>
+                <span class="description"><?php _e('Paste SVG code for the icon. Example: &lt;svg&gt;...&lt;/svg&gt;', 'taskip-templates'); ?></span>
+            </div>
+            
+            <div class="taskip-meta-field">
+                <label for="taskip_legal_icon_bg_color"><?php _e('Icon Background Color:', 'taskip-templates'); ?></label>
+                <input type="color" id="taskip_legal_icon_bg_color" name="_taskip_legal_icon_bg_color" value="<?php echo esc_attr($icon_background_color); ?>" />
+                <span class="description"><?php _e('Background color for the hero icon', 'taskip-templates'); ?></span>
+            </div>
+        </div>
+        <?php
+    }
+
 
     /**
      * Render template meta box
@@ -211,7 +265,7 @@ Used by 250+ professionals";
      */
     public function save_template_meta($post_id) {
 
-        // Add nonce check for usecases, templates, and tools
+        // Add nonce check for usecases, templates, tools, and legal
         if (isset($_POST['taskip_usecases_meta_nonce'])) {
             if (!wp_verify_nonce($_POST['taskip_usecases_meta_nonce'], 'taskip_usecases_meta')) {
                 return;
@@ -222,6 +276,10 @@ Used by 250+ professionals";
             }
         } elseif (isset($_POST['taskip_tools_meta_nonce'])) {
             if (!wp_verify_nonce($_POST['taskip_tools_meta_nonce'], 'taskip_tools_meta')) {
+                return;
+            }
+        } elseif (isset($_POST['taskip_legal_meta_nonce'])) {
+            if (!wp_verify_nonce($_POST['taskip_legal_meta_nonce'], 'taskip_legal_meta')) {
                 return;
             }
         } else {
@@ -288,6 +346,69 @@ Used by 250+ professionals";
             }
             if (isset($_POST['_taskip_tool_gradient_end'])) {
                 update_post_meta($post_id, '_taskip_tool_gradient_end', sanitize_hex_color($_POST['_taskip_tool_gradient_end']));
+            }
+        } elseif ($_POST['post_type'] === 'legal') {
+            if (!current_user_can('edit_post', $post_id)) {
+                return;
+            }
+
+            // Save legal page metadata
+            if (isset($_POST['_taskip_legal_hero_description'])) {
+                update_post_meta($post_id, '_taskip_legal_hero_description', sanitize_textarea_field($_POST['_taskip_legal_hero_description']));
+            }
+            if (isset($_POST['_taskip_legal_hero_icon'])) {
+                update_post_meta($post_id, '_taskip_legal_hero_icon', wp_kses($_POST['_taskip_legal_hero_icon'], array(
+                    'svg' => array(
+                        'class' => array(),
+                        'aria-hidden' => array(),
+                        'aria-labelledby' => array(),
+                        'role' => array(),
+                        'xmlns' => array(),
+                        'width' => array(),
+                        'height' => array(),
+                        'viewbox' => array(),
+                        'fill' => array(),
+                        'stroke' => array(),
+                        'stroke-width' => array(),
+                        'stroke-linecap' => array(),
+                        'stroke-linejoin' => array(),
+                    ),
+                    'path' => array(
+                        'd' => array(),
+                        'fill' => array(),
+                        'stroke' => array(),
+                        'stroke-width' => array(),
+                        'stroke-linecap' => array(),
+                        'stroke-linejoin' => array(),
+                    ),
+                    'circle' => array(
+                        'cx' => array(),
+                        'cy' => array(),
+                        'r' => array(),
+                        'fill' => array(),
+                        'stroke' => array(),
+                        'stroke-width' => array(),
+                    ),
+                    'rect' => array(
+                        'x' => array(),
+                        'y' => array(),
+                        'width' => array(),
+                        'height' => array(),
+                        'fill' => array(),
+                        'stroke' => array(),
+                        'stroke-width' => array(),
+                        'rx' => array(),
+                        'ry' => array(),
+                    ),
+                    'g' => array(),
+                    'defs' => array(),
+                    'clippath' => array(
+                        'id' => array(),
+                    ),
+                )));
+            }
+            if (isset($_POST['_taskip_legal_icon_bg_color'])) {
+                update_post_meta($post_id, '_taskip_legal_icon_bg_color', sanitize_hex_color($_POST['_taskip_legal_icon_bg_color']));
             }
         }
 

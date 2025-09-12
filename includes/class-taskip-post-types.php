@@ -182,6 +182,55 @@ class Taskip_Post_Types {
 
         register_post_type('tools', $tools_args);
 
+        // Register Legal post type
+        $legal_labels = array(
+            'name'               => _x('Legal Pages', 'post type general name', 'taskip-templates'),
+            'singular_name'      => _x('Legal Page', 'post type singular name', 'taskip-templates'),
+            'menu_name'          => _x('Legal', 'admin menu', 'taskip-templates'),
+            'name_admin_bar'     => _x('Legal Page', 'add new on admin bar', 'taskip-templates'),
+            'add_new'            => _x('Add New', 'legal page', 'taskip-templates'),
+            'add_new_item'       => __('Add New Legal Page', 'taskip-templates'),
+            'new_item'           => __('New Legal Page', 'taskip-templates'),
+            'edit_item'          => __('Edit Legal Page', 'taskip-templates'),
+            'view_item'          => __('View Legal Page', 'taskip-templates'),
+            'all_items'          => __('All Legal Pages', 'taskip-templates'),
+            'search_items'       => __('Search Legal Pages', 'taskip-templates'),
+            'parent_item_colon'  => __('Parent Legal Pages:', 'taskip-templates'),
+            'not_found'          => __('No legal pages found.', 'taskip-templates'),
+            'not_found_in_trash' => __('No legal pages found in Trash.', 'taskip-templates')
+        );
+
+        $legal_args = array(
+            'labels'             => $legal_labels,
+            'description'        => __('Legal pages like Terms of Service, Privacy Policy, etc.', 'taskip-templates'),
+            'public'             => true,
+            'publicly_queryable' => true,
+            'show_ui'            => true,
+            'show_in_menu'       => true,
+            'query_var'          => true,
+            'rewrite'            => array('slug' => 'legal'),
+            'capability_type'    => 'page',
+            'has_archive'        => true,
+            'hierarchical'       => true,
+            'menu_position'      => null,
+            'menu_icon'          => 'dashicons-admin-page',
+            'supports'           => array(
+                'title',
+                'editor',
+                'author',
+                'thumbnail',
+                'excerpt',
+                'comments',
+                'custom-fields',
+                'revisions',
+                'page-attributes',
+                'block-templates'
+            ),
+            'show_in_rest'       => true,
+        );
+
+        register_post_type('legal', $legal_args);
+
     }
 
     /**
@@ -189,7 +238,7 @@ class Taskip_Post_Types {
      */
     public function enqueue_block_editor_assets() {
         // Only enqueue for our custom post types
-        $allowed_post_types = array('taskip_template', 'taskip_usecases', 'tools');
+        $allowed_post_types = array('taskip_template', 'taskip_usecases', 'tools', 'legal');
         if (!in_array(get_post_type(), $allowed_post_types)) {
             return;
         }
@@ -200,7 +249,7 @@ class Taskip_Post_Types {
      * Ensure block editor is enabled for our post type
      */
     public function enable_block_editor($can_edit, $post_type) {
-        $allowed_post_types = array('taskip_template', 'taskip_usecases', 'tools');
+        $allowed_post_types = array('taskip_template', 'taskip_usecases', 'tools', 'legal');
         if (in_array($post_type, $allowed_post_types)) {
             return true; // Force enable block editor for our post types
         }
