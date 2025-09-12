@@ -1727,7 +1727,7 @@
 
 /* Legal Main Content */
 .taskip-legal-main {
-    background: #fff;
+    /*background: #fff;*/
     border-radius: 12px;
     overflow: hidden;
 }
