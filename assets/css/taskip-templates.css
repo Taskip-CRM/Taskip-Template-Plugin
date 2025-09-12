@@ -1457,3 +1457,659 @@
         padding: 1.25rem;
     }
 }
+
+/* Legal Pages Styles */
+
+/* Legal Archive Page */
+.taskip-legal-archive {
+    padding: 3rem 0;
+    padding-top: 140px;
+    background: #f8f9fa;
+    min-height: calc(100vh - 120px);
+}
+
+.taskip-legal-archive-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.taskip-legal-archive-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.taskip-legal-archive-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.taskip-legal-archive-description {
+    font-size: 1.125rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.taskip-legal-archive-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.taskip-legal-archive-item {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.taskip-legal-archive-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.taskip-legal-card {
+    padding: 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.taskip-legal-card-icon {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.taskip-legal-card-icon-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.taskip-legal-card-custom-icon,
+.taskip-legal-card-default-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.taskip-legal-card-custom-icon svg,
+.taskip-legal-card-default-icon svg {
+    width: 48px;
+    height: 48px;
+    fill: currentColor;
+    stroke: currentColor;
+}
+
+/* Legacy styles for backward compatibility */
+.taskip-legal-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.taskip-legal-default-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    color: #fff;
+}
+
+.taskip-legal-card-content {
+    flex-grow: 1;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.taskip-legal-card-title {
+    font-size: 1.45rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.taskip-legal-card-link {
+    color: #1a1a1a;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.taskip-legal-card-link:hover {
+    color: var(--color-2);
+}
+
+.taskip-legal-card-excerpt {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.taskip-legal-card-meta {
+    font-size: 0.875rem;
+    color: #888;
+    margin-bottom: 1rem;
+}
+
+.updated-label {
+    font-weight: 600;
+}
+
+.taskip-legal-card-footer {
+    margin-top: auto;
+    text-align: center;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 1.5rem;
+}
+
+.taskip-legal-card-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    color: #363636;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid #e2e2e2;
+}
+
+.taskip-legal-card-button:hover {
+    background: var(--color-2);
+    color: #fff;
+    border: 1px solid var(--color-2);
+    transform: translateY(-1px);
+}
+
+.taskip-legal-card-button svg {
+    transition: transform 0.3s ease;
+}
+
+.taskip-legal-card-button:hover svg {
+    transform: translateX(2px);
+}
+
+.taskip-legal-no-content {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: #fff;
+    border-radius: 12px;
+    color: #666;
+    font-size: 1.125rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Legal Single Page */
+.taskip-legal-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 20px;
+}
+
+.taskip-legal-wrapper {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 3rem;
+    align-items: start;
+    padding-top: 120px;
+}
+
+/* Legal Sidebar Navigation */
+.taskip-legal-sidebar {
+    position: sticky;
+    top: 2rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+    margin-top: 50px;
+}
+
+.taskip-legal-nav-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 1rem 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.taskip-legal-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.taskip-legal-nav-item {
+    margin-bottom: 0.25rem;
+}
+
+.taskip-legal-nav-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #666;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.taskip-legal-nav-link:hover {
+    background: #f8f9fa;
+    color: var(--color-2);
+}
+
+.taskip-legal-nav-link.current {
+    background: var(--color-2);
+    color: #fff;
+}
+
+/* Legal Main Content */
+.taskip-legal-main {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Legal Hero Section */
+.taskip-legal-hero {
+    background: #ffffff;
+    padding: 2rem 2rem;
+    box-shadow: 0 10px 30px rgba(16, 30, 54, .05);
+    margin: 1rem;
+    border-radius: 10px;
+    margin-top: 50px;
+}
+
+.taskip-legal-hero-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    max-width: none;
+    position: relative;
+}
+
+
+.taskip-legal-hero-icon-container {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
+    box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+    position: absolute;
+    right: 10px;
+    top: -70px;
+}
+
+.taskip-legal-hero-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.taskip-legal-hero-icon svg {
+    width: 48px;
+    height: 48px;
+    fill: currentColor;
+    stroke: currentColor;
+}
+
+.taskip-legal-hero-text {
+    flex: 1;
+}
+
+.taskip-legal-hero-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 1rem 0;
+    line-height: 1.2;
+}
+
+.taskip-legal-hero-description {
+    font-size: 1.125rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.taskip-legal-article {
+    padding: 3rem 2rem;
+}
+
+.taskip-legal-content {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #444;
+}
+
+.taskip-legal-content h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 2.5rem 0 1rem 0;
+    line-height: 1.3;
+}
+
+.taskip-legal-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 2rem 0 1rem 0;
+    line-height: 1.4;
+}
+
+.taskip-legal-content h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 1.5rem 0 0.75rem 0;
+    line-height: 1.4;
+}
+
+.taskip-legal-content p {
+    margin-bottom: 1.25rem;
+}
+
+.taskip-legal-content ul,
+.taskip-legal-content ol {
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+}
+
+.taskip-legal-content li {
+    margin-bottom: 0.5rem;
+}
+
+.taskip-legal-content a {
+    color: #667eea;
+    text-decoration: underline;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.taskip-legal-content a:hover {
+    color: #5a6fd8;
+}
+
+.taskip-legal-content blockquote {
+    background: #f8f9fa;
+    border-left: 4px solid #667eea;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+}
+
+.taskip-legal-content code {
+    background: #f1f3f4;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'Monaco', 'Courier New', monospace;
+    font-size: 0.875rem;
+}
+
+.taskip-legal-content pre {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+}
+
+.taskip-legal-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.taskip-legal-content th,
+.taskip-legal-content td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.taskip-legal-content th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.taskip-legal-footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid #f0f0f0;
+    text-align: center;
+}
+
+.taskip-legal-updated,
+.taskip-legal-published {
+    margin: 0;
+    font-size: 0.875rem;
+    color: #666;
+}
+
+.taskip-legal-updated strong,
+.taskip-legal-published strong {
+    color: #1a1a1a;
+}
+
+/* Page Links */
+.page-links {
+    margin: 2rem 0;
+    text-align: center;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.page-links a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin: 0 0.25rem;
+    background: #667eea;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.page-links a:hover {
+    background: #5a6fd8;
+}
+
+/* Responsive Styles for Legal Pages */
+@media (max-width: 1024px) {
+    .taskip-legal-wrapper {
+        grid-template-columns: 240px 1fr;
+        gap: 2rem;
+    }
+    
+    .taskip-legal-sidebar {
+        padding: 1.25rem;
+    }
+    
+    .taskip-legal-hero {
+        padding: 2.5rem 3rem;
+    }
+    
+    .taskip-legal-article {
+        padding: 2.5rem 3rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .taskip-legal-archive-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .taskip-legal-container {
+        padding: 1rem 15px;
+    }
+    
+    .taskip-legal-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .taskip-legal-sidebar {
+        position: static;
+        order: 2;
+    }
+    
+    .taskip-legal-main {
+        order: 1;
+    }
+    
+    .taskip-legal-hero {
+        padding: 2rem 1.5rem;
+    }
+    
+    .taskip-legal-hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+        padding: 2rem 1.5rem;
+    }
+    
+    .taskip-legal-hero-title {
+        font-size: 2rem;
+    }
+    
+    .taskip-legal-hero-description {
+        font-size: 1rem;
+    }
+    
+    .taskip-legal-article {
+        padding: 2rem 1.5rem;
+    }
+    
+    .taskip-legal-archive-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .taskip-legal-archive-title {
+        font-size: 2rem;
+    }
+    
+    .taskip-legal-card {
+        padding: 1.5rem;
+    }
+    
+    .taskip-legal-nav-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .taskip-legal-nav-item {
+        margin-bottom: 0;
+    }
+    
+    .taskip-legal-nav-link {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .taskip-legal-hero {
+        padding: 1.5rem 1rem;
+    }
+    
+    .taskip-legal-hero-icon-container {
+        width: 64px;
+        height: 64px;
+        border-radius: 12px;
+        position: initial;
+    }
+    
+    .taskip-legal-hero-icon svg {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .taskip-legal-hero-title {
+        font-size: 1.75rem;
+    }
+    
+    .taskip-legal-article {
+        padding: 1.5rem 1rem;
+    }
+    
+    .taskip-legal-archive-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .taskip-legal-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .taskip-legal-content h3 {
+        font-size: 1.25rem;
+    }
+    
+    .taskip-legal-archive-title {
+        font-size: 1.75rem;
+    }
+    
+    .taskip-legal-card {
+        padding: 1.25rem;
+    }
+    
+    .taskip-legal-card-icon-container {
+        width: 64px;
+        height: 64px;
+        border-radius: 12px;
+    }
+    
+    .taskip-legal-card-custom-icon svg,
+    .taskip-legal-card-default-icon svg {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .taskip-legal-nav-list {
+        flex-direction: column;
+    }
+    
+    .taskip-legal-nav-link {
+        text-align: center;
+    }
+}
