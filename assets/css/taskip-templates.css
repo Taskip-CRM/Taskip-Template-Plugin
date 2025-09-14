@@ -1706,7 +1706,7 @@
 
 .taskip-legal-nav-link {
     display: block;
-    padding: 0.75rem 1rem;
+    /*padding: 0.75rem 1rem;*/
     color: #666;
     text-decoration: none;
     border-radius: 8px;
@@ -1721,8 +1721,7 @@
 }
 
 .taskip-legal-nav-link.current {
-    background: var(--color-2);
-    color: #fff;
+    color: var(--color-2);
 }
 
 /* Legal Main Content */
