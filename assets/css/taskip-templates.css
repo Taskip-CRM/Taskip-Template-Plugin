@@ -1835,6 +1835,7 @@
 
 .taskip-legal-content p {
     margin-bottom: 1.25rem;
+    color: #1a1a1a;
 }
 
 .taskip-legal-content ul,
@@ -1897,7 +1898,7 @@
 .taskip-legal-content td {
     padding: 1rem;
     text-align: left;
-    border-bottom: 1px solid #e9ecef;
+    border: 1px solid #e9ecef;
 }
 
 .taskip-legal-content th {
