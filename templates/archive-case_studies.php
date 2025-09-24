@@ -14,14 +14,14 @@ get_header(); ?>
 <div class="taskip-case-studies-archive">
     <div class="taskip-case-studies-archive-container">
 
-        <header class="taskip-case-studies-archive-header">
+        <!-- <header class="taskip-case-studies-archive-header">
             <h1 class="taskip-case-studies-archive-title">
                 <?php _e('Case Studies', 'taskip-templates'); ?>
             </h1>
             <p class="taskip-case-studies-archive-description">
                 <?php _e('Discover real-world success stories and learn how our solutions have helped businesses achieve their goals.', 'taskip-templates'); ?>
             </p>
-        </header>
+        </header> -->
 
         <?php if (have_posts()) : ?>
             <div class="taskip-case-studies-archive-grid">
@@ -38,52 +38,19 @@ get_header(); ?>
                             <div class="taskip-case-study-thumbnail">
                                 <a href="<?php the_permalink(); ?>">
                                     <?php the_post_thumbnail('large', array('class' => 'taskip-case-study-image')); ?>
-                                </a>
-                                <div class="taskip-case-study-overlay">
-                                    <a href="<?php the_permalink(); ?>" class="taskip-case-study-read-more">
-                                        <?php _e('Read Case Study', 'taskip-templates'); ?>
-                                    </a>
-                                </div>
+                                </a> 
                             </div>
                         <?php endif; ?>
 
-                        <div class="taskip-case-study-content">
-                            <?php if ($company_name) : ?>
-                                <div class="taskip-case-study-company">
-                                    <?php echo esc_html($company_name); ?>
-                                </div>
-                            <?php endif; ?>
-
+                        <div class="taskip-case-study-content">                           
                             <h2 class="taskip-case-study-title">
                                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                             </h2>
-
-                            <?php if ($industry) : ?>
-                                <div class="taskip-case-study-industry">
-                                    <span class="taskip-case-study-industry-label"><?php _e('Industry:', 'taskip-templates'); ?></span>
-                                    <?php echo esc_html($industry); ?>
-                                </div>
-                            <?php endif; ?>
-
-                            <div class="taskip-case-study-excerpt">
-                                <?php the_excerpt(); ?>
-                            </div>
-
-                            <?php if ($results) : ?>
-                                <div class="taskip-case-study-results">
-                                    <strong><?php _e('Key Results:', 'taskip-templates'); ?></strong>
-                                    <?php echo wp_kses_post($results); ?>
-                                </div>
-                            <?php endif; ?>
-
                             <div class="taskip-case-study-meta">
-                                <span class="taskip-case-study-date">
-                                    <?php echo get_the_date(); ?>
-                                </span>
                                 <a href="<?php the_permalink(); ?>" class="taskip-case-study-link">
-                                    <?php _e('Read Full Case Study', 'taskip-templates'); ?>
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                        <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    Read full case study
+                                    <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                     <path d="M4 12H20M20 12L16 8M20 12L16 16" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </a>
                             </div>
