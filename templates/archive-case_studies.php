@@ -14,14 +14,14 @@ get_header(); ?>
 <div class="taskip-case-studies-archive">
     <div class="taskip-case-studies-archive-container">
 
-        <!-- <header class="taskip-case-studies-archive-header">
+        <header class="taskip-case-studies-archive-header">
             <h1 class="taskip-case-studies-archive-title">
                 <?php _e('Case Studies', 'taskip-templates'); ?>
             </h1>
             <p class="taskip-case-studies-archive-description">
-                <?php _e('Discover real-world success stories and learn how our solutions have helped businesses achieve their goals.', 'taskip-templates'); ?>
+                <?php _e('Real client stories showing how agencies and freelancers transformed their workflows and achieved measurable success with Taskip.', 'taskip-templates'); ?>
             </p>
-        </header> -->
+        </header>
 
         <?php if (have_posts()) : ?>
             <div class="taskip-case-studies-archive-grid">
