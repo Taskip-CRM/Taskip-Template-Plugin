@@ -69,9 +69,11 @@ class Taskip_Templates {
         if (is_post_type_archive('taskip_template') ||
             is_post_type_archive('tools') ||
             is_post_type_archive('legal') ||
+            is_post_type_archive('case_studies') ||
             is_singular('taskip_template') ||
             is_singular('tools') ||
             is_singular('legal') ||
+            is_singular('case_studies') ||
             is_tax('template_type') ||
             is_tax('template_industry') ||
             is_page_template('templates/page-templates.php')) {
@@ -120,6 +122,16 @@ class Taskip_Templates {
                 'nonce' => wp_create_nonce('template_search_nonce')
             ));
 
+        }
+
+        // Enqueue case studies specific CSS only on case studies pages
+        if (is_post_type_archive('case_studies') || is_singular('case_studies')) {
+            wp_enqueue_style(
+                'taskip-case-studies-style',
+                TASKIP_TEMPLATES_PLUGIN_URL . 'assets/css/taskip-case-studies.css',
+                array(),
+                TASKIP_TEMPLATES_VERSION
+            );
         }
     }
     function handle_template_search() {
@@ -198,12 +210,16 @@ class Taskip_Templates {
             $file = 'single-tools.php';
         } elseif (is_singular('legal')) {
             $file = 'single-legal.php';
+        } elseif (is_singular('case_studies')) {
+            $file = 'single-case_studies.php';
         } elseif (is_post_type_archive('taskip_template')) {
             $file = 'archive-taskip_template.php';
         } elseif (is_post_type_archive('tools')) {
             $file = 'archive-tools.php';
         } elseif (is_post_type_archive('legal')) {
             $file = 'archive-legal.php';
+        } elseif (is_post_type_archive('case_studies')) {
+            $file = 'archive-case_studies.php';
         } elseif (is_tax('template_type') || is_tax('template_industry')) {
             $file = 'taxonomy-template.php';
         }
