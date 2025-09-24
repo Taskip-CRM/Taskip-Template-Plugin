@@ -1,0 +1,399 @@
+/**
+ * Case Studies Styles
+ *
+ * @package Taskip Templates Showcase
+ */
+
+/* Archive Page Styles */
+.taskip-case-studies-archive {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.taskip-case-studies-archive-container {
+    width: 100%;
+}
+
+.taskip-case-studies-archive-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.taskip-case-studies-archive-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.taskip-case-studies-archive-description {
+    font-size: 1.125rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Grid Layout */
+.taskip-case-studies-archive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+/* Case Study Cards */
+
+.taskip-case-study-card {
+    background: #ffffff !important;
+    border-radius: 10px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+
+/* Thumbnail */
+.taskip-case-study-thumbnail img{
+    width: 100%;
+    height: auto;
+    border-radius: 10px 10px 0 0;
+}
+
+
+/* Card Content */
+.taskip-case-study-content {
+    padding: 24px 30px 50px 30px;
+    border-radius: 0 0 10px 10px;
+}
+
+.taskip-case-study-title{
+    padding-bottom: 20px;
+    border-bottom: 1px solid #00000038;
+}
+
+.taskip-case-study-title a{
+    display: block;
+    font-weight: 600;
+    color: rgb(5, 20, 65);
+    margin-top: 6px;
+    text-decoration: none;    
+    font-size: 22px;
+    line-height: 32px;
+}
+
+.taskip-case-study-link {
+    padding-top: 20px;
+    color: #000000;
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.taskip-case-study-link svg {
+    position: relative;
+    right: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+/* Responsive adjustments for card content */
+@media (max-width: 768px) {
+    .taskip-case-study-content {
+        padding: 20px;
+        
+    }
+    
+    .taskip-case-study-meta {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 576px) {
+    .taskip-case-studies-archive-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .taskip-case-study-content {
+        padding: 16px;
+        padding-bottom: 40px;
+    }
+    .taskip-case-study-title a {
+        font-size: 18px;
+        line-height: 26px;
+    }
+    
+}
+
+/* Pagination */
+.taskip-case-studies-pagination {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.taskip-case-studies-no-posts {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #666;
+}
+
+
+
+/* Single case study */
+.taskip-case-study-container {
+    padding-top: 120px;
+    padding-bottom: 60px;
+
+    .taskip-case-study-single {
+    max-width: 900px;
+    margin: 0 auto;
+    }
+
+    .taskip-case-study-hero {
+        margin-bottom: 40px;
+    }
+
+    .taskip-case-study-hero-image {
+        margin-bottom: 30px;
+    }
+
+    .taskip-case-study-featured-image {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .taskip-case-study-meta-row {
+        margin-bottom: 20px;
+    }
+
+    .taskip-case-study-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+    }
+
+    .taskip-case-study-meta-label {
+        color: #666;
+        font-weight: 500;
+    }
+
+    .taskip-case-study-meta-value {
+        color: #01081B;
+        font-weight: 400;
+    }
+
+    .taskip-case-study-hero .taskip-case-study-single-title {
+        max-width: 850px;
+        font-family: "Manrope", sans-serif;
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 48px;
+        color: #051441;
+        margin-top: 12px;
+        margin-bottom: 0;
+    }
+
+    .taskip-case-study-single-content {
+        margin-top: 40px;
+    }
+
+    .taskip-case-study-section {
+        margin-bottom: 40px;
+    }
+
+    .taskip-case-study-single-content {
+        max-width: 750px;
+        font-family: 'haffer-xh';
+        font-size: 16px;
+        line-height: 1.6;
+        color: #302640;
+
+        .wp-block-heading {
+                margin-bottom: 20px;
+                font-weight: 600;
+            }
+            h2.wp-block-heading {
+                font-size: 32px;
+                line-height: 1.2;
+            }
+            h3.wp-block-heading {
+                font-size: 24px;
+                line-height: 1.3;
+            }
+            h4.wp-block-heading {
+                font-size: 18px;
+                line-height: 1.3;
+            }
+            h5.wp-block-heading {
+                font-size: 16px;
+                line-height: 1.2;
+            }
+            p,ul,ol{
+                gap: 0;
+                line-height: 2;
+            }
+            p:has(img){
+                img {
+                    box-shadow: 0 20px 40px rgba(16, 30, 54, .2);
+                    border-radius: 12px;
+                }
+            }
+            p:has(+ .wp-block-heading){
+                margin-bottom: 30px;
+            }
+            p:has(+p){
+                margin-bottom: 20px;
+            }
+            ul{
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                list-style: disc;
+                padding-left: 40px;
+            }
+            ul:has(+.wp-block-heading),
+            ul:has(+p) {
+                margin-bottom: 24px;
+            }
+            .rank-math-question {
+                font-weight: 600;
+                margin-bottom: 20px;
+                font-size: 18px;
+            }
+            .rank-math-answer {
+                line-height: 2;
+                font-family: var(--haffer-XH);
+            }
+            .rank-math-faq-item:not(:first-child) .rank-math-question {
+                margin-top: 24px;
+            }
+        
+    }
+}
+
+
+
+/* Responsive adjustments for single case study */
+@media (max-width: 768px) {
+    .taskip-case-study-container {
+        .taskip-case-study-single-content {
+            font-size: 14px;
+            line-height: 1.5;
+            
+            h2.wp-block-heading {
+                font-size: 28px;
+            }
+            h3.wp-block-heading {
+                font-size: 22px;
+            }
+            h4.wp-block-heading {
+                font-size: 16px;
+            }
+            h5.wp-block-heading {
+                font-size: 14px;
+            }
+            
+            ul {
+                padding-left: 30px;
+                gap: 8px;
+            }
+            
+            .rank-math-question {
+                font-size: 16px;
+                margin-bottom: 16px;
+            }
+            
+            p:has(+ .wp-block-heading) {
+                margin-bottom: 24px;
+            }
+            
+            p:has(+p) {
+                margin-bottom: 16px;
+            }
+        }
+
+        .taskip-case-study-hero .taskip-case-study-single-title {
+            font-size: 28px;
+            line-height: 36px;
+        }
+
+        .taskip-case-study-meta-item {
+            font-size: 12px;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .taskip-case-study-container{
+        .taskip-case-study-single-content {
+            font-size: 12px;
+            line-height: 1.4;
+            
+            h2.wp-block-heading {
+                font-size: 24px;
+                line-height: 1.3;
+            }
+            h3.wp-block-heading {
+                font-size: 20px;
+                line-height: 1.3;
+            }
+            h4.wp-block-heading {
+                font-size: 16px;
+            }
+            h5.wp-block-heading {
+                font-size: 14px;
+            }
+            
+            ul {
+                padding-left: 24px;
+                gap: 6px;
+            }
+            
+            .rank-math-question {
+                font-size: 16px;
+                margin-bottom: 14px;
+            }
+            
+            .rank-math-faq-item:not(:first-child) .rank-math-question {
+                margin-top: 20px;
+            }
+            
+            p:has(+ .wp-block-heading) {
+                margin-bottom: 20px;
+            }
+            
+            p:has(+p) {
+                margin-bottom: 14px;
+            }
+            
+            p:has(img) img {
+                border-radius: 8px;
+                box-shadow: 0 10px 20px rgba(16, 30, 54, .15);
+            }
+        }
+
+        .taskip-case-study-hero .taskip-case-study-single-title {
+            font-size: 24px;
+            line-height: 32px;
+        }
+
+        .taskip-case-study-meta-item {
+            font-size: 10px;
+        }
+    }
+}
+
+
+
+

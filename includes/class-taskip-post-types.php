@@ -231,6 +231,54 @@ class Taskip_Post_Types {
 
         register_post_type('legal', $legal_args);
 
+        // Register Case Studies post type
+        $case_studies_labels = array(
+            'name'               => _x('Case Studies', 'post type general name', 'taskip-templates'),
+            'singular_name'      => _x('Case Study', 'post type singular name', 'taskip-templates'),
+            'menu_name'          => _x('Case Studies', 'admin menu', 'taskip-templates'),
+            'name_admin_bar'     => _x('Case Study', 'add new on admin bar', 'taskip-templates'),
+            'add_new'            => _x('Add New', 'case study', 'taskip-templates'),
+            'add_new_item'       => __('Add New Case Study', 'taskip-templates'),
+            'new_item'           => __('New Case Study', 'taskip-templates'),
+            'edit_item'          => __('Edit Case Study', 'taskip-templates'),
+            'view_item'          => __('View Case Study', 'taskip-templates'),
+            'all_items'          => __('All Case Studies', 'taskip-templates'),
+            'search_items'       => __('Search Case Studies', 'taskip-templates'),
+            'parent_item_colon'  => __('Parent Case Studies:', 'taskip-templates'),
+            'not_found'          => __('No case studies found.', 'taskip-templates'),
+            'not_found_in_trash' => __('No case studies found in Trash.', 'taskip-templates')
+        );
+
+        $case_studies_args = array(
+            'labels'             => $case_studies_labels,
+            'description'        => __('Case studies showcasing real-world applications.', 'taskip-templates'),
+            'public'             => true,
+            'publicly_queryable' => true,
+            'show_ui'            => true,
+            'show_in_menu'       => true,
+            'query_var'          => true,
+            'rewrite'            => array('slug' => 'case-studies'),
+            'capability_type'    => 'post',
+            'has_archive'        => true,
+            'hierarchical'       => false,
+            'menu_position'      => null,
+            'menu_icon'          => 'dashicons-portfolio',
+            'supports'           => array(
+                'title',
+                'editor',
+                'author',
+                'thumbnail',
+                'excerpt',
+                'comments',
+                'custom-fields',
+                'revisions',
+                'block-templates'
+            ),
+            'show_in_rest'       => true,
+        );
+
+        register_post_type('case_studies', $case_studies_args);
+
     }
 
     /**
@@ -238,7 +286,7 @@ class Taskip_Post_Types {
      */
     public function enqueue_block_editor_assets() {
         // Only enqueue for our custom post types
-        $allowed_post_types = array('taskip_template', 'taskip_usecases', 'tools', 'legal');
+        $allowed_post_types = array('taskip_template', 'taskip_usecases', 'tools', 'legal', 'case_studies');
         if (!in_array(get_post_type(), $allowed_post_types)) {
             return;
         }
@@ -249,7 +297,7 @@ class Taskip_Post_Types {
      * Ensure block editor is enabled for our post type
      */
     public function enable_block_editor($can_edit, $post_type) {
-        $allowed_post_types = array('taskip_template', 'taskip_usecases', 'tools', 'legal');
+        $allowed_post_types = array('taskip_template', 'taskip_usecases', 'tools', 'legal', 'case_studies');
         if (in_array($post_type, $allowed_post_types)) {
             return true; // Force enable block editor for our post types
         }
