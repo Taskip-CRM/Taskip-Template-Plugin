@@ -8,7 +8,7 @@
 .taskip-case-studies-archive {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem 1rem;
+    padding: 180px 16px 60px 16px;
 }
 
 .taskip-case-studies-archive-container {
@@ -17,31 +17,50 @@
 
 .taskip-case-studies-archive-header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 80px;
 }
 
 .taskip-case-studies-archive-title {
-    font-size: 2.5rem;
+    font-size: 40px;
     font-weight: 700;
     color: #1a1a1a;
-    margin-bottom: 1rem;
+    margin-bottom: 16px;
     line-height: 1.2;
 }
 
 .taskip-case-studies-archive-description {
-    font-size: 1.125rem;
+    font-size: 18px;
     color: #666;
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.6;
 }
 
+
+@media (max-width: 768px) {
+    .taskip-case-studies-archive {
+        padding: 120px 16px 60px 16px;
+    }
+    .taskip-case-studies-archive-title {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 576px) {
+    .taskip-case-studies-archive-title {
+        font-size: 32px;
+    }
+    .taskip-case-studies-archive-header {
+        margin-bottom: 40px;
+    }
+}
+
 /* Grid Layout */
 .taskip-case-studies-archive-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
+    gap: 32px;
+    margin-bottom: 48px;
 }
 
 /* Case Study Cards */
@@ -121,7 +140,7 @@
 @media (max-width: 576px) {
     .taskip-case-studies-archive-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 24px;
     }
     .taskip-case-study-content {
         padding: 16px;
