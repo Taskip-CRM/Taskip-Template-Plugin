@@ -38,8 +38,8 @@ get_header(); ?>
                     
                     // Set defaults and fallbacks
                     $display_title = !empty($card_title) ? $card_title : get_the_title();
-                    $gradient_start = !empty($gradient_start) ? $gradient_start : '#667eea';
-                    $gradient_end = !empty($gradient_end) ? $gradient_end : '#764ba2';
+                    $gradient_start = !empty($gradient_start) ? $gradient_start : '#00b289';
+                    $gradient_end = !empty($gradient_end) ? $gradient_end : '#7db1a5';
                     $tagline = !empty($tagline) ? $tagline : get_the_excerpt();
                     $description = !empty($description) ? $description : 'A helpful tool for your daily tasks.';
                     $cta_url = !empty($cta_url) ? $cta_url : get_permalink();
