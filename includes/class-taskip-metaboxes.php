@@ -137,8 +137,8 @@ class Taskip_Metaboxes {
         $gradient_end = get_post_meta($post->ID, '_taskip_tool_gradient_end', true);
         
         // Set defaults
-        $gradient_start = !empty($gradient_start) ? $gradient_start : '#667eea';
-        $gradient_end = !empty($gradient_end) ? $gradient_end : '#764ba2';
+        $gradient_start = !empty($gradient_start) ? $gradient_start : '#00b289';
+        $gradient_end = !empty($gradient_end) ? $gradient_end : '#7db1a5';
         ?>
         <div class="taskip-meta-section">
             <div class="taskip-meta-field">
