@@ -154,6 +154,30 @@ $preview_url = get_post_meta(get_the_ID(), "_taskip_preview_url", true);
         <a href="<?php echo esc_url($preview_url)?>" class="taskip-signup-btn" target="_blank"><?php _e("Use This Template", "taskip-templates"); ?></a>
         <?php echo do_shortcode('[taskip_template_download]'); ?>
     </div>
+        <div class="ai_generator_tools">
+            <div class="ib-tool-card">
+                <div class="ib-tool-header" style="background:linear-gradient(135deg, #00b289 0%, #7db1a5 100%);color:#ffffff">
+                    <h3 class="ib-tool-name" style="color:#ffffff">Free Ai Scope of Work Generator</h3>
+                    <p class="ib-tool-tagline" style="color:#ffffff">Generate comprehensive SOW documents for client projects, service offerings, and business partnerships. Streamline your project documentation with professional templates.</p>
+                </div>
+                <div class="ib-tool-body">
+
+                    <ul class="ib-tool-features">
+                        <li>Professional SOW templates</li>
+                        <li>Add your business details</li>
+                        <li>Include deliverables and timelines</li>
+                        <li>Customize terms automatically</li>
+                        <li>Download as PDF instantly</li>
+                    </ul>
+
+                    <div class="ib-tool-cta">
+                        <a href="https://taskip.net/tools/free-ai-scope-of-work-generator/" style="color:#00b289" target="_blank" rel="noopener">
+                            <span>Try Free Scope of Work Generator</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
     </div>
